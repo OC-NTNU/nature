@@ -5,6 +5,7 @@ log.basicConfig(level=log.INFO)
 #log.basicConfig(level=log.DEBUG)
 
 from tempfile import TemporaryDirectory
+from os import getenv
 
 from nature.terms import get_terms
 from nature.search import search_npg, rank_results, results_to_html
@@ -17,7 +18,7 @@ from nature.sent import split_sent
 from nature.brat import make_brat_files, rank_brat_files
 from nature.bibtex import lookup_bibtex
 
-NXML2TXT = '/Users/erwin/Projects/OCEAN-CERTAIN/nature2/nxml2txt_py2'
+NXML2TXT = getenv("NXML2TXT", "./nxml2txt_py2")
 
 CORE_NLP = CoreNLP()
 
