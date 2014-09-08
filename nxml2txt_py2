@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Python2
-PYTHON="/Users/erwin/anaconda/bin/python"
-
+#PYTHON="python2"
+: ${PYTHON2:?"ERROR: env var PYTHON2 is undefined"}
 
 # Convert NLM .nxml to text and standoff annotations
 
@@ -37,9 +37,9 @@ else
 fi
 
 cat $nxmlfn |
-    $PYTHON $SRC/rewritetex.py - -s -v |
-    $PYTHON $SRC/rewritemmla.py - -s -v |
-    $PYTHON $SRC/respace.py - -s |
-    $PYTHON $SRC/rewriteu2a.py - -s |
-    $PYTHON $SRC/standoff.py - $textfn $sofn
+    $PYTHON2 $SRC/rewritetex.py - -s -v |
+    $PYTHON2 $SRC/rewritemmla.py - -s -v |
+    $PYTHON2 $SRC/respace.py - -s |
+    $PYTHON2 $SRC/rewriteu2a.py - -s |
+    $PYTHON2 $SRC/standoff.py - $textfn $sofn
     

@@ -3,5 +3,6 @@ records/*
 bib/*
 *.pkl
 terms.txt
+set_env.sh
 
 
