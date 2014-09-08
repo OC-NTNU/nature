@@ -38,7 +38,7 @@ TMP_SCNLP_DIR = "tmp"
 
 FULL_HTM_DIR = "full/htm"
 
-BIB_DIR = "abstracts/bib"
+BIB_DIR = "bib"
 
 
 
