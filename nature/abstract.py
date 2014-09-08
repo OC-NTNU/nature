@@ -1,5 +1,6 @@
 
 from glob import glob
+from xml.sax.saxutils import escape
 
 import json
 
@@ -7,6 +8,8 @@ import pandas as pd
 
 import logging
 log = logging.getLogger(__name__)
+
+
 
 from nature.utils import make_dir, new_name
 
@@ -51,7 +54,9 @@ def extract_abstracts(results_fname, rec_dir, abs_dir, abs_max_n):
             abs_fname = new_name(rec_fname, abs_dir, "#abs.xml")
             with open(abs_fname, "wt") as f:
                 log.info("writing abstract to " + abs_fname)
-                f.write(template.format(title=title, description=description))
+                f.write(template.format(
+                    title=escape(title), 
+                    description=escape(description)))
         else:
             log.warn("skipping ill-formed abstract from {}".format(rec_fname))
     
