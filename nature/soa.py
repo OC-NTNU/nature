@@ -46,14 +46,18 @@ def convert_to_soa(nxml2txt, xml_files, soa_dir):
     for xml_fname in file_list(xml_files):
         txt_fname = new_name(xml_fname, soa_dir, ".txt")
         soa_fname = new_name(xml_fname, soa_dir, ".soa")
-        log.info("converting {} to {} and {}".format(
-            xml_fname, txt_fname, soa_fname))
-        try:
-            ret = check_output([nxml2txt, xml_fname, txt_fname, soa_fname], 
-                               stderr=STDOUT
-                               )
-        except CalledProcessError as err:
-            log.error(err.returncode)
-            log.error(err.cmd)
-            log.error(err.output)
-        log.info(ret.decode("utf-8"))
+        if not exist(txt_fname) and not exist(soa_fname):
+            log.info("converting {} to {} and {}".format(
+                xml_fname, txt_fname, soa_fname))
+            try:
+                ret = check_output([nxml2txt, xml_fname, txt_fname, soa_fname], 
+                                   stderr=STDOUT
+                                   )
+            except CalledProcessError as err:
+                log.error(err.returncode)
+                log.error(err.cmd)
+                log.error(err.output)
+            log.info(ret.decode("utf-8"))
+        else:
+            log.info("{} and {} already exists".format(txt_fname, soa_fname))
+            
