@@ -2,7 +2,7 @@ import logging
 log = logging.getLogger(__name__)
 
 from glob import glob
-from subprocess import check_output, STDOUT
+from subprocess import check_output, STDOUT, CalledProcessError
 
 from nature.utils import make_dir, file_list, new_name
 
@@ -48,7 +48,12 @@ def convert_to_soa(nxml2txt, xml_files, soa_dir):
         soa_fname = new_name(xml_fname, soa_dir, ".soa")
         log.info("converting {} to {} and {}".format(
             xml_fname, txt_fname, soa_fname))
-        ret = check_output([nxml2txt, xml_fname, txt_fname, soa_fname], 
-                           stderr=STDOUT
-                           )
+        try:
+            ret = check_output([nxml2txt, xml_fname, txt_fname, soa_fname], 
+                               stderr=STDOUT
+                               )
+        except CalledProcessError, err:
+            log.error(err.returncode)
+            log.error(err.cmd)
+            log.error(err.output)
         log.info(ret.decode("utf-8"))
