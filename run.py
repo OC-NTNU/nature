@@ -33,6 +33,7 @@ ABS_SCNLP_DIR = "abstracts/scnlp"
 ABS_SENT_DIR = "abstracts/sent"
 ABS_BRAT_DIR = "abstracts/brat"
 ABS_RANK_DIR = "abstracts/rank"
+ABS_MAX_N = 10000
 
 TMP_SCNLP_DIR = "tmp"
 
@@ -53,8 +54,8 @@ def get_text(debug=False, clean=False):
                RECORDS_DIR,
                HTM_RESULTS_FILE)
         
-    get_terms("checked_terms.csv", TERMS_FILE, n_terms=3)
-    search_npg(RESULTS_FILE, RECORDS_DIR, TERMS_FILE, max_records=3)
+    get_terms("checked_terms.csv", TERMS_FILE, n_terms=n_terms)
+    #search_npg(RESULTS_FILE, RECORDS_DIR, TERMS_FILE, max_records=max_records)
     rank_results(RESULTS_FILE)
     results_to_html(RESULTS_FILE, RECORDS_DIR, HTM_RESULTS_FILE)
     
@@ -68,6 +69,9 @@ def preproc_full(clean=False):
 
     
 def preproc_abstracts(clean=False, debug=False):
+    if debug:
+        ABS_MAX_N=10
+        
     if clean:
         remove_any(ABS_XML_DIR,
                    ABS_BIB_DIR,
@@ -78,7 +82,7 @@ def preproc_abstracts(clean=False, debug=False):
                    ABS_BRAT_DIR,
                    ABS_RANK_DIR)
         
-    extract_abstracts(RECORDS_DIR, ABS_XML_DIR)
+    extract_abstracts(RESULTS_FILE, RECORDS_DIR, ABS_XML_DIR, ABS_MAX_N)
     #lookup_bibtex(ABS_XML_DIR, ABS_BIB_DIR)
     #convert_to_soa(NXML2TXT, ABS_XML_DIR, ABS_SOA_DIR)
     #CORE_NLP.ssplit(ABS_SOA_DIR + "/*.txt", TMP_SCNLP_DIR)
@@ -91,7 +95,7 @@ def preproc_abstracts(clean=False, debug=False):
     
 
 #get_text(debug=True)
-preproc_abstracts(clean=False)
+preproc_abstracts(clean=False, debug=True)
 
 
 
