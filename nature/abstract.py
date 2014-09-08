@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 from nature.utils import make_dir, new_name
 
 
-template = ('<?xml version="1.0" encoding="UTF-8"?>'
+template = ('<?xml version="1.0" encoding="UTF-8"?>\n'
             "<abstract>\n"
             "<title>\n{title}\n</title>\n"
             "<description>\n{description}\n</description>\n"
