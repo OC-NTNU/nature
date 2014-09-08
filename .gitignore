@@ -1,5 +1,6 @@
 abstracts/*
 records/*
+bib/*
 *.pkl
 terms.txt
 

@@ -27,17 +27,18 @@ RECORDS_DIR = "records"
 HTM_RESULTS_FILE = "search_results.html"
 
 ABS_XML_DIR = "abstracts/xml"
-ABS_BIB_DIR = "abstracts/bib"
 ABS_SOA_DIR = "abstracts/soa"
 ABS_SCNLP_DIR = "abstracts/scnlp"
 ABS_SENT_DIR = "abstracts/sent"
 ABS_BRAT_DIR = "abstracts/brat"
 ABS_RANK_DIR = "abstracts/rank"
-ABS_MAX_N = 10000
+ABS_MAX_N = 15000
 
 TMP_SCNLP_DIR = "tmp"
 
 FULL_HTM_DIR = "full/htm"
+
+BIB_DIR = "abstracts/bib"
 
 
 
@@ -76,7 +77,7 @@ def preproc_abstracts(clean=False, debug=False):
         
     if clean:
         remove_any(ABS_XML_DIR,
-                   ABS_BIB_DIR,
+                   BIB_DIR,
                    ABS_SOA_DIR,
                    ABS_SCNLP_DIR,
                    TMP_SCNLP_DIR,
@@ -84,8 +85,8 @@ def preproc_abstracts(clean=False, debug=False):
                    ABS_BRAT_DIR,
                    ABS_RANK_DIR)
         
-    extract_abstracts(RESULTS_FILE, RECORDS_DIR, ABS_XML_DIR, ABS_MAX_N)
-    #lookup_bibtex(ABS_XML_DIR, ABS_BIB_DIR)
+    #extract_abstracts(RESULTS_FILE, RECORDS_DIR, ABS_XML_DIR, ABS_MAX_N)
+    lookup_bibtex(ABS_XML_DIR, BIB_DIR)
     #convert_to_soa(NXML2TXT, ABS_XML_DIR, ABS_SOA_DIR)
     #CORE_NLP.ssplit(ABS_SOA_DIR + "/*.txt", TMP_SCNLP_DIR)
     #split_sent(ABS_SOA_DIR, TMP_SCNLP_DIR, ABS_SENT_DIR)
