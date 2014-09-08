@@ -69,6 +69,8 @@ def preproc_full(clean=False):
 
     
 def preproc_abstracts(clean=False, debug=False):
+    global ABS_MAX_N
+    
     if debug:
         ABS_MAX_N=10
         
@@ -95,7 +97,7 @@ def preproc_abstracts(clean=False, debug=False):
     
 
 #get_text(debug=True)
-preproc_abstracts(clean=False, debug=True)
+preproc_abstracts(clean=False, debug=False)
 
 
 
