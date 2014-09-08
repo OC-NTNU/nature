@@ -3,6 +3,7 @@ log = logging.getLogger(__name__)
 
 from glob import glob
 from subprocess import check_output, STDOUT, CalledProcessError
+from os.path import exists
 
 from nature.utils import make_dir, file_list, new_name
 
