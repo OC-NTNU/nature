@@ -52,7 +52,7 @@ def convert_to_soa(nxml2txt, xml_files, soa_dir):
             ret = check_output([nxml2txt, xml_fname, txt_fname, soa_fname], 
                                stderr=STDOUT
                                )
-        except CalledProcessError, err:
+        except CalledProcessError as err:
             log.error(err.returncode)
             log.error(err.cmd)
             log.error(err.output)

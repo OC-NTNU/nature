@@ -86,8 +86,8 @@ def preproc_abstracts(clean=False, debug=False):
                    ABS_RANK_DIR)
         
     #extract_abstracts(RESULTS_FILE, RECORDS_DIR, ABS_XML_DIR, ABS_MAX_N)
-    lookup_bibtex(ABS_XML_DIR, BIB_DIR)
-    #convert_to_soa(NXML2TXT, ABS_XML_DIR, ABS_SOA_DIR)
+    #lookup_bibtex(ABS_XML_DIR, BIB_DIR)
+    convert_to_soa(NXML2TXT, ABS_XML_DIR, ABS_SOA_DIR)
     #CORE_NLP.ssplit(ABS_SOA_DIR + "/*.txt", TMP_SCNLP_DIR)
     #split_sent(ABS_SOA_DIR, TMP_SCNLP_DIR, ABS_SENT_DIR)
     #CORE_NLP.parse(ABS_SENT_DIR, ABS_SCNLP_DIR)
