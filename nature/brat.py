@@ -26,8 +26,14 @@ def rank_brat_files(results_fname, brat_dir, rank_dir, min_n_sent=6):
     n = 0
     
     for doi in tab.index:
+        try:
+            prefix, suffix = doi.split("/")
+        except IndexError:
+            log.error("Skipping ill-formed DOI: " + doi)
+            continue
+        
         from_fname_prefix = join(brat_dir, 
-                                 "{}#{}#abs#sent#brat".format(*doi.split("/")))
+                                 "{}#{}#abs#sent#brat".format(prefix, suffix))
         txt_fname = from_fname_prefix + ".txt"
         
         try:
