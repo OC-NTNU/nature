@@ -43,14 +43,14 @@ def extract_abstracts(results_fname, rec_dir, abs_dir, abs_max_n):
     
     for doi in tab.index[:abs_max_n]:
         doi = doi.replace("/", "#")
-        rec_fname = new_name(doi, rec_dir, ".json", max_ext_size=0)
+        rec_fname = new_name(doi, rec_dir, ".json", strip_ext=[""])
         entry = json.load(open(rec_fname, "rt"))
         head = entry["sru:recordData"]["pam:message"]["pam:article"]["xhtml:head"]
         title = head["dc:title"]
         description = head["dc:description"]    
         
         if title and description:
-            abs_fname = new_name(rec_fname, abs_dir, "#abs.xml")
+            abs_fname = new_name(rec_fname, abs_dir, "#abs.xml", strip_ext=["json"])
             with open(abs_fname, "wt") as f:
                 log.info("writing abstract to " + abs_fname)
                 f.write(template.format(

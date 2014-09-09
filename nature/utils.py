@@ -29,17 +29,16 @@ def make_dir(path):
         makedirs(path)
         
         
-def file_name(path, max_ext_size=4, extensions=[]):
+def file_name(path, max_ext_size=4, strip_ext=[]):
     """
     Return file's basename (i.e. without directory) and stripped of all
-    extensions, optionally limited in size and to those in the list of
-    extensions
+    extensions, optionally limited in size and/or to those in the list strip_ext
     """
     name = basename(path)
     parts = name.split(".")
     
     while parts:
-        if extensions and parts[-1] not in extensions:
+        if strip_ext and parts[-1] not in strip_ext:
             break
         if len(parts[-1]) > max_ext_size:
             break
@@ -49,13 +48,13 @@ def file_name(path, max_ext_size=4, extensions=[]):
 
 
 def new_name(fname, new_dir=None, new_ext=None, 
-             max_ext_size=4, extensions=[]):
+             max_ext_size=4, strip_ext=[]):
     """
     E.g. new_name('/dir1/dir2/file.ext1.ext2', '/dir_3', 'ext3') returns
     '/dir3/file.ext3'
     """
     if new_ext:
-        new_name = file_name(fname, max_ext_size, extensions) + new_ext
+        new_name = file_name(fname, max_ext_size, strip_ext) + new_ext
     else:
         new_name = basename(fname)
         

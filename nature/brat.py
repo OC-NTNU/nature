@@ -13,8 +13,8 @@ def make_brat_files(sent_files, brat_dir):
     make_dir(brat_dir)
             
     for sent_fname in file_list(sent_files, "*sent.txt"):
-        txt_fname = new_name(sent_fname, brat_dir, "#brat.txt")
-        ann_fname = new_name(sent_fname, brat_dir, "#brat.ann")
+        txt_fname = new_name(sent_fname, brat_dir, "#brat.txt", strip_ext=["txt"])
+        ann_fname = new_name(sent_fname, brat_dir, "#brat.ann", strip_ext=["txt"])
         log.info("creating Brat files {} and {}".format(txt_fname, ann_fname))
         copy(sent_fname, txt_fname )
         open(ann_fname, "wt")

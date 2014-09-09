@@ -45,8 +45,8 @@ def convert_to_soa(nxml2txt, xml_files, soa_dir):
     make_dir(soa_dir)
     
     for xml_fname in file_list(xml_files):
-        txt_fname = new_name(xml_fname, soa_dir, ".txt")
-        soa_fname = new_name(xml_fname, soa_dir, ".soa")
+        txt_fname = new_name(xml_fname, soa_dir, ".txt", strip_ext=["xml"])
+        soa_fname = new_name(xml_fname, soa_dir, ".soa", strip_ext=["xml"])
         if not exists(txt_fname) and not exists(soa_fname):
             log.info("converting {} to {} and {}".format(
                 xml_fname, txt_fname, soa_fname))
