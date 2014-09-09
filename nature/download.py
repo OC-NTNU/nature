@@ -7,7 +7,7 @@ from os.path import join, exists
 from os import makedirs
 
 
-def download_webpages(results_fname, out_dir):
+def download_webpages(results_fname, out_dir, full_max_n):
     """
     download html source of article webpages
     """
@@ -16,8 +16,8 @@ def download_webpages(results_fname, out_dir):
     if not exists(out_dir):
         makedirs(out_dir)
     
-    for n, doi in enumerate(tab.index):
-        out_fname = join(out_dir, doi.replace("/","#") + ".htm")
+    for n, doi in enumerate(tab.index[:full_max_n]):
+        out_fname = join(out_dir, doi.replace("/","#") + "#full.htm")
         if not exists(out_fname):    
             url = "http://dx.doi.org/" + doi
             response = get(url)
@@ -25,3 +25,5 @@ def download_webpages(results_fname, out_dir):
             with open(out_fname, 'w') as outf:
                 log.info("writing " + out_fname)
                 outf.write(response.content)
+        else:
+            log.info("skipping existing " + out_fname)

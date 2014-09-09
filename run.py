@@ -38,6 +38,7 @@ ABS_MAX_N = 15000
 TMP_SCNLP_DIR = "tmp"
 
 FULL_HTM_DIR = "full/htm"
+FULL_MAX_N = 10000
 
 BIB_DIR = "bib"
 
@@ -66,7 +67,7 @@ def preproc_full(clean=False):
     if clean:
         remove_any(FULL_HTM_DIR)    
         
-    download_webpages(RESULTS_FILE, FULL_HTM_DIR)
+    download_webpages(RESULTS_FILE, FULL_HTM_DIR, FULL_MAX_N)
     
 
     
