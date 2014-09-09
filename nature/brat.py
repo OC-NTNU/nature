@@ -29,7 +29,7 @@ def rank_brat_files(results_fname, brat_dir, rank_dir, min_n_sent=6):
         try:
             prefix, suffix = doi.split("/")
         except ValueError:
-            log.error("Skipping ill-formed DOI: " + doi)
+            log.warn("Skipping ill-formed DOI: " + doi)
             continue
         
         from_fname_prefix = join(brat_dir, 
@@ -49,8 +49,9 @@ def rank_brat_files(results_fname, brat_dir, rank_dir, min_n_sent=6):
         
         n += 1
         to_fname_prefix = join(rank_dir,
-                               "{:05d}#{}#{}#abs#sent#brat.txt".format(n, 
-                                                                       *doi.split("/")))
+                               "{:05d}#{}#{}#abs#sent#brat".format(n, 
+                                                                       prefix, 
+                                                                       suffix))
         
         for ext in ".txt", ".ann":
             log.info("creating ranked Brat file " + to_fname_prefix + ext)
