@@ -1,6 +1,5 @@
 
 from glob import glob
-from xml.sax.saxutils import escape
 
 import json
 
@@ -55,8 +54,8 @@ def extract_abstracts(results_fname, rec_dir, abs_dir, abs_max_n):
             with open(abs_fname, "wt") as f:
                 log.info("writing abstract to " + abs_fname)
                 f.write(template.format(
-                    title=escape(title), 
-                    description=escape(description)))
+                    title=title, 
+                    description=description))
         else:
             log.warn("skipping ill-formed abstract from {}".format(rec_fname))
     
