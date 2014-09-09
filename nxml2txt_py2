@@ -36,10 +36,15 @@ else
     sofn=${nxmlfn%.nxml}.so
 fi
 
+#cat $nxmlfn |
+    #$PYTHON2 $SRC/rewritetex.py - -s -v |
+    #$PYTHON2 $SRC/rewritemmla.py - -s -v |
+    #$PYTHON2 $SRC/respace.py - -s |
+    #$PYTHON2 $SRC/rewriteu2a.py - -s |
+    #$PYTHON2 $SRC/standoff.py - $textfn $sofn
+
 cat $nxmlfn |
-    $PYTHON2 $SRC/rewritetex.py - -s -v |
-    $PYTHON2 $SRC/rewritemmla.py - -s -v |
     $PYTHON2 $SRC/respace.py - -s |
     $PYTHON2 $SRC/rewriteu2a.py - -s |
     $PYTHON2 $SRC/standoff.py - $textfn $sofn
-    
+        
