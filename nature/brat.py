@@ -28,7 +28,7 @@ def rank_brat_files(results_fname, brat_dir, rank_dir, min_n_sent=6):
     for doi in tab.index:
         try:
             prefix, suffix = doi.split("/")
-        except IndexError:
+        except ValueError:
             log.error("Skipping ill-formed DOI: " + doi)
             continue
         
