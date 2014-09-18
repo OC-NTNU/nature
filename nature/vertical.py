@@ -36,7 +36,7 @@ def convert_to_vertical_format(scnlp_files, records_dir, vert_dir):
         record = load(open(rec_fname, "rt")) 
         head = record["sru:recordData"]["pam:message"]["pam:article"]["xhtml:head"]
         
-        title = strip_xml(head["dc:title"])
+        title = strip_xml(head["dc:title"]).replace("\n", " ")
         authors = ", ".join(head["dc:creator"] or [""])
         genre = head["prism:genre"]
         journal = head["prism:publicationName"]
