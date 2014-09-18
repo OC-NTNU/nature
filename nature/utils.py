@@ -6,6 +6,8 @@ from shutil import rmtree
 from os import makedirs, remove
 from glob import glob
 
+from lxml.etree import fromstring, tostring
+
 
 def remove_any(*files):
     """
@@ -68,3 +70,12 @@ def file_list(files, file_glob="*"):
         files = glob(files)
         
     return files
+
+
+def strip_xml(s):
+    """
+    strip all xml tags 
+    """
+    return tostring(fromstring("<x>" + s + "</x>"), method="text", encoding=str)
+    
+    

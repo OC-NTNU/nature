@@ -17,6 +17,7 @@ from nature.scnlp import CoreNLP
 from nature.sent import split_sent
 from nature.brat import make_brat_files, rank_brat_files
 from nature.bibtex import lookup_bibtex
+from nature.vertical import convert_to_vertical_format
 
 NXML2TXT = getenv("NXML2TXT", "./nxml2txt_py2")
 
@@ -41,6 +42,8 @@ FULL_HTM_DIR = "full/htm"
 FULL_MAX_N = 10000
 
 BIB_DIR = "bib"
+
+ABS_VERT_DIR = "abstracts/vert"
 
 
 
@@ -97,10 +100,16 @@ def preproc_abstracts(clean=False, debug=False):
     #rank_brat_files(RESULTS_FILE, ABS_BRAT_DIR, ABS_RANK_DIR)
     
     
-    
+ 
+def make_vertical_corpus():
+    convert_to_vertical_format(ABS_SCNLP_DIR, RECORDS_DIR, ABS_VERT_DIR)
+    pass
 
-#get_text(debug=True)
-preproc_abstracts(clean=False, debug=False)
+ 
+if __name__ == "__main__":
+    #get_text(debug=True)
+    #preproc_abstracts(clean=False, debug=False)
+    make_vertical_corpus()
 
 
 
