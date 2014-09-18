@@ -42,8 +42,10 @@ def convert_to_vertical_format(scnlp_files, records_dir, vert_dir):
         journal = head["prism:publicationName"]
         year = head["prism:publicationDate"].split("-")[0]
         url = head["prism:url"]
+        doi = head["prism:doi"]
         
-        header = '<doc\n title="{}"\n authors="{}"\n journal="{}"\n year="{}"\n genre="{}"\n url="{}"\n>\n'.format(
+        header = '<doc doi="{}" title="{}" authors="{}" journal="{}" year="{}" genre="{}" url="{}">\n'.format(
+                doi,
                 title,
                 authors,
                 journal,
@@ -85,7 +87,7 @@ def convert_to_vertical_format(scnlp_files, records_dir, vert_dir):
                 if n == 0:
                     vert_file.write("</title>\n")           
                 
-            vert_file.write("</description>\n</doc>")        
+            vert_file.write("</description>\n</doc>\n")        
     
     
     
