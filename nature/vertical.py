@@ -63,8 +63,6 @@ def convert_to_vertical_format(scnlp_files, records_dir, vert_dir):
             for n, sent in enumerate(tree.findall(".//tokens")):
                 if n == 0:
                     vert_file.write("<title>\n")
-                elif n == 1:
-                    vert_file.write("<description>\n")
 
                 vert_file.write("<s>\n")
                 last_end = None
@@ -85,7 +83,7 @@ def convert_to_vertical_format(scnlp_files, records_dir, vert_dir):
                 vert_file.write("</s>\n")   
                 
                 if n == 0:
-                    vert_file.write("</title>\n")           
+                    vert_file.write("</title>\n<description>\n")           
                 
             vert_file.write("</description>\n</doc>\n")        
     
