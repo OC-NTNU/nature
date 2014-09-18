@@ -8,6 +8,20 @@ from nature.utils import make_dir, file_list, new_name, strip_xml
 import logging
 log = logging.getLogger(__name__)
 
+UNESCAPE = {
+    '-lrb-': '(',
+    '-rrb-': ')',
+    '-rsb-': '[',
+    '-rsb-': ']',
+    '-lcb-': '{',
+    '-rcb-': '}'
+}
+
+def undo_escape(s):
+    """
+    undo PTB-style escape of brackets
+    """
+    return UNESCAPE.get(s.lower(), s)
 
 
 def convert_to_vertical_format(scnlp_files, records_dir, vert_dir):
@@ -51,12 +65,21 @@ def convert_to_vertical_format(scnlp_files, records_dir, vert_dir):
                     vert_file.write("<description>\n")
 
                 vert_file.write("<s>\n")
+                last_end = None
                     
                 for tok in sent.findall("token"):
-                    word = tok.find("word").text
-                    lemma = tok.find("lemma").text
-                    pos = tok.find("POS").text
+                    begin = tok.find("CharacterOffsetBegin").text
+                    if begin == last_end:
+                        # insert special marker that indicates no space
+                        # between preceding and current token
+                        vert_file.write("<g/>\n")                        
+                    word = undo_escape(tok.find("word").text)
+                    lemma = undo_escape(tok.find("lemma").text)
+                    pos = undo_escape(tok.find("POS").text)
                     vert_file.write("{}\t{}\t{}\n".format(word, lemma, pos))
+                    begin = tok.find("CharacterOffsetBegin").text
+                    last_end = tok.find("CharacterOffsetEnd").text
+                    
                 vert_file.write("</s>\n")   
                 
                 if n == 0:
