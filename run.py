@@ -77,7 +77,13 @@ def preproc_full(clean=False):
     ##download_webpages(RESULTS_FILE, FULL_HTM_DIR, FULL_MAX_N)
     ##extract_content(FULL_HTM_DIR, FULL_XML_DIR)
     ##convert_to_soa(NXML2TXT, FULL_XML_DIR, FULL_SOA_DIR)
-    CORE_NLP.parse(FULL_SOA_DIR + "/*.txt", FULL_SCNLP_DIR)
+    CORE_NLP.run(FULL_SOA_DIR + "/*.txt", 
+                 FULL_SCNLP_DIR,
+                 annotators="tokenize,ssplit,pos,lemma,parse",
+                 ##memory="64g",
+                 ##threads=16,
+                 options=" -ssplit.newlineIsSentenceBreak always"
+                 )
     
 
     

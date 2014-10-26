@@ -36,7 +36,8 @@ def extract_content(htm_files, xml_dir):
         xml_fname = new_name(htm_fname, new_dir=xml_dir, new_ext=".xml",
                              strip_ext=["htm"])
         log.info("writing content to " + xml_fname)
-        xml = etree.tostring(content, pretty_print=True,
+        # ommit tail text to prevent ill-formed xml doc
+        xml = etree.tostring(content, pretty_print=True, with_tail=False,
                              xml_declaration=True, encoding="utf-8")
         open(xml_fname, "wb").write(xml)
         
