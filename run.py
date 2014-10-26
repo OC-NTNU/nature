@@ -18,6 +18,7 @@ from nature.sent import split_sent
 from nature.brat import make_brat_files, rank_brat_files
 from nature.bibtex import lookup_bibtex
 from nature.vertical import convert_to_vertical_format
+from nature.full import extract_content
 
 NXML2TXT = getenv("NXML2TXT", "./nxml2txt_py2")
 
@@ -40,6 +41,9 @@ TMP_SCNLP_DIR = "tmp"
 
 FULL_HTM_DIR = "full/htm"
 FULL_MAX_N = 10000
+FULL_XML_DIR = "full/xml"
+FULL_SOA_DIR = "full/soa"
+FULL_SCNLP_DIR = "full/scnlp"
 
 BIB_DIR = "bib"
 
@@ -70,7 +74,10 @@ def preproc_full(clean=False):
     if clean:
         remove_any(FULL_HTM_DIR)    
         
-    download_webpages(RESULTS_FILE, FULL_HTM_DIR, FULL_MAX_N)
+    ##download_webpages(RESULTS_FILE, FULL_HTM_DIR, FULL_MAX_N)
+    ##extract_content(FULL_HTM_DIR, FULL_XML_DIR)
+    ##convert_to_soa(NXML2TXT, FULL_XML_DIR, FULL_SOA_DIR)
+    CORE_NLP.parse(FULL_SOA_DIR + "/*.txt", FULL_SCNLP_DIR)
     
 
     
@@ -103,13 +110,14 @@ def preproc_abstracts(clean=False, debug=False):
  
 def make_vertical_corpus():
     convert_to_vertical_format(ABS_SCNLP_DIR, RECORDS_DIR, ABS_VERT_DIR)
-    pass
 
  
 if __name__ == "__main__":
     #get_text(debug=True)
     #preproc_abstracts(clean=False, debug=False)
-    make_vertical_corpus()
+    #make_vertical_corpus()
+    #FULL_HTM_FILES = "full/htm/10.1038#nature*"
+    preproc_full()
 
 
 
