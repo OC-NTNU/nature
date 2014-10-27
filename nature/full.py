@@ -28,11 +28,25 @@ def extract_content(htm_files, xml_dir):
     
     for htm_fname in file_list(htm_files):
         tree   = etree.parse(htm_fname, parser)
+        
+        # check if license allows full text access
+        meta_elem = tree.xpath("//meta[@name='Access' or @name='access']")
+        if not meta_elem:
+            # If there is not meta tag, this means sone technical error such as
+            # DOI not found or server problems
+            log.warning('skipping: no <meta name="access" ...> in ' + htm_fname)
+            continue
+        if meta_elem[0].get("content") not in ("Yes", "yes"):
+            log.warning('skipping: no access rights to ' + htm_fname)
+            continue
+        
+        # locate content    
         content = ( tree.find("//article") or tree.find("//{*}div[@id='content']"))
         if content is None:
             log.warning('skipping: no <article> or <div id="content" ...> in ' + 
                         htm_fname)
             continue   
+        
         xml_fname = new_name(htm_fname, new_dir=xml_dir, new_ext=".xml",
                              strip_ext=["htm"])
         log.info("writing content to " + xml_fname)
