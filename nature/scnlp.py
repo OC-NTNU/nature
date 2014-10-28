@@ -1,12 +1,12 @@
 import logging
 log = logging.getLogger(__name__)
 
-from os.path import join
+from os.path import join, exists
 from tempfile import NamedTemporaryFile, TemporaryDirectory
 from os import getenv
 from subprocess import check_output, STDOUT
 
-from nature.utils import make_dir, file_list
+from nature.utils import make_dir, file_list, new_name
 
 
 
@@ -31,16 +31,18 @@ class CoreNLP(object):
             output_extension=".xml",
             options="",
             stamp=True,
+            resume=False
             ):
         """
     
         txt_files:
             a directory, a glob pattern, a single filename or a list of filenames
         """
+        make_dir(out_dir)        
+        in_files = file_list(txt_files)  
+            
         tmp_file = NamedTemporaryFile("wt", buffering=1)
-        tmp_file.write("\n".join(file_list(txt_files)) + "\n")
-        
-        make_dir(out_dir)
+        tmp_file.write("\n".join(in_files) + "\n")
             
         jars = ['joda-time.jar',
                 'jollyday.jar',
@@ -52,12 +54,16 @@ class CoreNLP(object):
         
         if stamp:
             replace_extension = True
-            output_extension = '"#scnlp_v{}{}"'.format(self.lib_ver, 
+            output_extension = "#scnlp_v{}{}".format(self.lib_ver, 
                                                        output_extension)    
         if replace_extension:
             options += " -replaceExtension"
         if output_extension:
-            options += " -outputExtension " + output_extension
+            options += ' -outputExtension "{}"'.format(output_extension)
+        
+        if resume:
+            in_files = [fname for fname in in_files
+                        if not exists(new_name(fname, out_dir, output_extension))]
                  
         cmd = ("java -Xmx{} -cp {} {} -annotators {} -filelist {} "
                "-outputDirectory {} -threads {} {}").format(
@@ -75,7 +81,8 @@ class CoreNLP(object):
                memory="3g",
                threads=1,
                options=" -ssplit.newlineIsSentenceBreak always",
-               stamp=False 
+               stamp=False,
+               resume=False 
                ):
         log.info("start splitting sentences")
         self.run(txt_files, 
@@ -84,7 +91,8 @@ class CoreNLP(object):
                  memory=memory,
                  threads=threads,
                  options=options,
-                 stamp=stamp
+                 stamp=stamp,
+                 resume=resume
                  )
         
     def parse(self,
@@ -93,7 +101,8 @@ class CoreNLP(object):
                annotators="tokenize,ssplit,pos,lemma,parse",
                memory="3g",
                threads=1,
-               options=" -ssplit.eolonly"
+               options=" -ssplit.eolonly",
+               resume=False
                ):
         log.info("start parsing sentences")
         self.run(txt_files, 
@@ -101,7 +110,8 @@ class CoreNLP(object):
                  annotators,
                  memory=memory,
                  threads=threads,
-                 options=options
+                 options=options,
+                 resume=resume
                  )
         
 

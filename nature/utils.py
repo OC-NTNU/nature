@@ -52,7 +52,7 @@ def file_name(path, max_ext_size=4, strip_ext=[]):
 def new_name(fname, new_dir=None, new_ext=None, 
              max_ext_size=4, strip_ext=[]):
     """
-    E.g. new_name('/dir1/dir2/file.ext1.ext2', '/dir_3', 'ext3') returns
+    E.g. new_name('/dir1/dir2/file.ext1.ext2', '/dir_3', '.ext3') returns
     '/dir3/file.ext3'
     """
     if new_ext:
