@@ -41,9 +41,6 @@ class CoreNLP(object):
         make_dir(out_dir)        
         in_files = file_list(txt_files)  
             
-        tmp_file = NamedTemporaryFile("wt", buffering=1)
-        tmp_file.write("\n".join(in_files) + "\n")
-            
         jars = ['joda-time.jar',
                 'jollyday.jar',
                 'stanford-corenlp-{}.jar'.format(self.lib_ver),
@@ -64,6 +61,9 @@ class CoreNLP(object):
         if resume:
             in_files = [fname for fname in in_files
                         if not exists(new_name(fname, out_dir, output_extension))]
+                
+        tmp_file = NamedTemporaryFile("wt", buffering=1)
+        tmp_file.write("\n".join(in_files) + "\n")                 
                  
         cmd = ("java -Xmx{} -cp {} {} -annotators {} -filelist {} "
                "-outputDirectory {} -threads {} {}").format(
