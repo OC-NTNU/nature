@@ -46,15 +46,20 @@ def convert_to_vertical_format(scnlp_files, records_dir, vert_dir, write_body):
     make_dir(vert_dir)
     
     for scnlp_fname in file_list(scnlp_files, "*.xml"):
-        vert_fname = new_name(scnlp_fname, vert_dir, ".vert", strip_ext=["xml"])
-        log.info("writing " + vert_fname)
-        
-        with open(vert_fname, "wt") as vert_file:
-            write_header(vert_file, records_dir, scnlp_fname)
-            tree = ElementTree(file=scnlp_fname)            
-            write_body(vert_file, tree)
-            # close header
-            vert_file.write("</doc>\n")    
+        try:
+            vert_fname = new_name(scnlp_fname, vert_dir, ".vert", strip_ext=["xml"])
+            log.info("writing " + vert_fname)
+            
+            with open(vert_fname, "wt") as vert_file:
+                write_header(vert_file, records_dir, scnlp_fname)
+                tree = ElementTree(file=scnlp_fname)            
+                write_body(vert_file, tree)
+                # close header
+                vert_file.write("</doc>\n")    
+        except Exception as err:
+            # catch any error and continue
+            log.exception(str(err))
+            log.error(u'Skipped file' + scnlp_fname)
 
 
 def write_abs_body(vert_file, tree):
