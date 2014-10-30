@@ -56,10 +56,11 @@ def convert_to_vertical_format(scnlp_files, records_dir, vert_dir, write_body):
                 write_body(vert_file, tree)
                 # close header
                 vert_file.write("</doc>\n")    
-        except Exception as err:
-            # catch any error and continue
-            log.exception(str(err))
-            log.error(u'Skipped file' + scnlp_fname)
+        except Exception:
+            # catch any weird errors (e.g. ill-formed XML in record's title) 
+            # and just continue
+            log.exception("Something went wrong...")
+            log.error("Skipped file " + scnlp_fname)
 
 
 def write_abs_body(vert_file, tree):
