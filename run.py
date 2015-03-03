@@ -17,8 +17,9 @@ from nature.scnlp import CoreNLP
 from nature.sent import split_sent
 from nature.brat import make_brat_files, rank_brat_files
 from nature.bibtex import lookup_bibtex
-from nature.vertical import convert_to_vertical_format
+from nature.vertical import convert_abs_to_vertical_format, convert_full_to_vertical_format
 from nature.full import extract_content
+from nature.parse import extract_parse_trees
 
 NXML2TXT = getenv("NXML2TXT", "./nxml2txt_py2")
 
@@ -35,6 +36,7 @@ ABS_SCNLP_DIR = "abstracts/scnlp"
 ABS_SENT_DIR = "abstracts/sent"
 ABS_BRAT_DIR = "abstracts/brat"
 ABS_RANK_DIR = "abstracts/rank"
+ABS_PARSE_DIR = "abstracts/parse"
 ABS_MAX_N = 15000
 
 TMP_SCNLP_DIR = "tmp"
@@ -48,6 +50,7 @@ FULL_SCNLP_DIR = "full/scnlp"
 BIB_DIR = "bib"
 
 ABS_VERT_DIR = "abstracts/vert"
+FULL_VERT_DIR = "full/vert"
 
 
 
@@ -82,7 +85,8 @@ def preproc_full(clean=False):
                  annotators="tokenize,ssplit,pos,lemma,parse",
                  ##memory="64g",
                  ##threads=16,
-                 options=" -ssplit.newlineIsSentenceBreak always"
+                 options=" -ssplit.newlineIsSentenceBreak always",
+                 resume=True
                  )
     
 
@@ -115,7 +119,11 @@ def preproc_abstracts(clean=False, debug=False):
     
  
 def make_vertical_corpus():
-    convert_to_vertical_format(ABS_SCNLP_DIR, RECORDS_DIR, ABS_VERT_DIR)
+    #convert_abs_to_vertical_format(ABS_SCNLP_DIR, RECORDS_DIR, ABS_VERT_DIR)
+    convert_full_to_vertical_format(FULL_SCNLP_DIR, RECORDS_DIR, FULL_VERT_DIR)
+    
+def make_parse_trees():    
+    extract_parse_trees(ABS_SCNLP_DIR, ABS_PARSE_DIR)
 
  
 if __name__ == "__main__":
@@ -123,7 +131,8 @@ if __name__ == "__main__":
     #preproc_abstracts(clean=False, debug=False)
     #make_vertical_corpus()
     #FULL_HTM_FILES = "full/htm/10.1038#nature*"
-    preproc_full()
+    #preproc_full()
+    make_parse_trees()
 
 
 

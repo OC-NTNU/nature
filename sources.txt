@@ -1,0 +1,605 @@
+340, Scientific Reports, Research, 2013
+293, Nature Communications, Research, 2013
+203, Scientific Reports, Research, 2014
+191, Nature, Research, 2012
+189, Nature, Research, 2013
+178, Nature, Research, 2011
+172, Nature Communications, Research, 2014
+159, Nature, Research, 2008
+140, Nature, Research, 2010
+136, Nature, Research, 2005
+134, The ISME Journal, Research, 2013
+133, Nature, Research, 2004
+131, Nature, Research, 2009
+130, Nature, Research, 2000
+117, Nature, Research, 2003
+117, Scientific Reports, Research, 2012
+115, Nature, Research, 1999
+114, Nature Communications, Research, 2012
+113, Nature, Research, 2007
+113, Nature, Research, 2002
+111, The ISME Journal, Research, 2011
+102, Nature, Research, 2006
+100, Nature, Research, 2001
+100, Nature, Research, 1998
+96, The ISME Journal, Research, 2010
+93, The ISME Journal, Research, 2012
+86, The ISME Journal, Research, 2009
+85, Nature, Research, 2014
+83, Nature Communications, Research, 2011
+82, Nature, Comments and Opinion, 2012
+76, Nature, Comments and Opinion, 2011
+62, The ISME Journal, Research, 2008
+59, Nature, News, 2010
+58, Nature Protocols, Protocols, 2007
+56, Nature, News, 2012
+56, The ISME Journal, Research, 2014
+55, Nature, News, 1999
+54, Nature, Comments and Opinion, 1999
+53, Nature, News, 2004
+52, Nature Protocols, Protocols, 2006
+51, Nature, Comments and Opinion, 2007
+50, Nature, News, 2009
+49, Nature, Comments and Opinion, 2005
+49, Nature, Comments and Opinion, 2013
+48, Nature Reviews Microbiology, Reviews, 2008
+48, Nature, News, 2001
+48, Nature, Comments and Opinion, 2010
+48, Nature Protocols, Protocols, 2013
+47, Nature Climate Change, Research, 2012
+46, Nature Reviews Microbiology, Reviews, 2004
+45, Nature, News, 2003
+44, Nature, News, 2011
+44, Nature Protocols, Protocols, 2010
+44, Nature Reviews Microbiology, Reviews, 2006
+43, Nature, Comments and Opinion, 2008
+43, Nature Reviews Microbiology, Reviews, 2013
+43, Nature, News, 2000
+42, The ISME Journal, Research, 2007
+42, Nature Reviews Microbiology, Reviews, 2005
+42, Nature Reviews Microbiology, Reviews, 2010
+42, Nature Protocols, Protocols, 2009
+42, Nature Reviews Microbiology, Reviews, 2007
+41, Nature, Comments and Opinion, 2009
+41, Nature, News, 2005
+41, Nature, News, 2007
+41, Nature Protocols, Protocols, 2008
+40, Nature Reviews Microbiology, Reviews, 2012
+40, Nature, News, 2002
+40, Nature, News, 1998
+40, Nature Reviews Microbiology, Reviews, 2011
+40, Nature Reviews Microbiology, Reviews, 2009
+39, Nature, News, 2008
+39, Scientific Reports, Research, 2011
+38, Scientific American, None, 2006
+38, Nature, News, 2006
+37, Nature, News and Views, 1998
+37, Nature Protocols, Protocols, 2011
+36, Nature, Comments and Opinion, 2006
+34, Nature, News and Views, 2011
+34, Nature Geoscience, Research, 2013
+33, Nature Geoscience, Research, 2011
+33, Scientific American, None, 2008
+32, Nature, Special Features, 2001
+32, Nature, News and Views, 2003
+31, Nature Protocols, Protocols, 2012
+31, Scientific American, Special Features, 2009
+30, Nature, Comments and Opinion, 2001
+30, Nature, Comments and Opinion, 2000
+30, Scientific American, None, 2009
+29, Nature, Comments and Opinion, 2004
+29, Scientific American, Special Features, 2012
+29, Nature Geoscience, Research, 2012
+28, Nature, Comments and Opinion, 2003
+28, Nature, Comments and Opinion, 2002
+28, Scientific American, None, 2005
+28, Nature, News and Views, 2007
+28, Scientific American, Special Features, 2002
+27, Nature, News and Views, 2000
+27, Nature, News and Views, 2001
+27, Nature, News and Views, 2013
+26, Nature, News and Views, 1999
+26, Scientific American, None, 2012
+26, Scientific American, None, 2011
+26, Scientific American, Special Features, 2007
+25, Scientific American, None, 2003
+25, Nature, Special Features, 2002
+25, Nature, News and Views, 2004
+25, Nature Geoscience, Research, 2009
+25, Scientific American, Special Features, 2013
+25, Nature Geoscience, Research, 2010
+24, Nature Chemical Biology, Research, 2012
+24, Scientific American, None, 2007
+24, Nature, News and Views, 2002
+24, Nature, News and Views, 2009
+24, Nature Geoscience, Research, 2008
+24, Nature, Comments and Opinion, 1998
+24, Nature, Research Highlights, 2011
+24, Scientific American, Special Features, 2010
+24, Scientific American, Special Features, 2011
+23, Nature Chemical Biology, Research, 2013
+23, Nature Chemical Biology, Research, 2011
+23, Scientific American, Special Features, 1998
+23, Nature, Special Features, 2006
+23, Nature, News and Views, 2006
+23, Nature Climate Change, Research, 2013
+23, Nature Climate Change, Comments and Opinion, 2011
+23, Nature, Research Highlights, 2010
+23, Scientific American, Special Features, 2004
+23, Scientific American, None, 2000
+22, Nature, Special Features, 2000
+22, Scientific American, None, 2013
+22, Scientific American, Special Features, 2000
+22, Scientific American, Special Features, 2003
+21, Nature Protocols, Protocols, 2014
+21, Nature, News and Views, 2008
+21, Nature Communications, Research, 2010
+21, Scientific American, Special Features, 2001
+21, Scientific American, Special Features, 2005
+20, Nature, Special Features, 2008
+20, Nature, Reviews, 2012
+20, Scientific American, Special Features, 2006
+20, Nature, News and Views, 2012
+20, Nature, Research Highlights, 2012
+20, Scientific American, None, 2001
+19, Scientific American, Special Features, 1999
+19, Scientific American, None, 2004
+19, Nature, Research Highlights, 2008
+19, Scientific American, Special Features, 2008
+19, Nature, Research Highlights, 2013
+18, Nature, Special Features, 2004
+18, Nature, Special Features, 2005
+18, Nature, News and Views, 2005
+18, Nature, Special Features, 2009
+18, Scientific American, None, 1998
+17, Nature Methods, Research, 2013
+17, Nature Methods, Research, 2011
+17, Nature, Special Features, 2003
+17, Nature, Reviews, 2013
+17, Nature, Special Features, 2007
+16, Nature News, News, 2008
+16, Nature Climate Change, Comments and Opinion, 2012
+16, Nature Reviews Microbiology, Reviews, 2014
+16, Nature Chemical Biology, Research, 2009
+16, Nature Climate Change, News and Views, 2011
+16, Scientific American, None, 1999
+15, Scientific American, None, 2002
+15, Nature, Reviews, 2011
+15, Nature, News and Views, 2010
+15, Nature Methods, Research, 2006
+14, Nature, Research Highlights, 2009
+14, Scientific American, None, 2010
+13, Nature Methods, Research, 2012
+13, Nature, News, 2013
+13, Nature Chemistry, Research, 2011
+13, Nature, News and Views, 2014
+13, Nature Chemical Biology, Research, 2007
+12, Nature Chemical Biology, Research, 2014
+12, Nature, Editorial, 2010
+12, Nature Climate Change, Reviews, 2013
+12, Nature Climate Change, Reviews, 2012
+12, Nature Climate Change, Research, 2014
+12, Nature News, News, 2010
+12, Nature, Editorial, 2008
+11, Nature News, News, 2009
+11, Nature, Research Highlights, 2014
+11, Nature Reviews Microbiology, News, 2008
+11, Nature Reviews Microbiology, News, 2007
+11, Nature, Editorial, 2012
+11, Nature Reviews Microbiology, Research Highlights, 2013
+11, Nature News, News, 2011
+11, Nature, Comments and Opinion, 2014
+11, Nature Chemical Biology, Research, 2006
+11, Nature Methods, Research, 2009
+11, Nature Climate Change, Research, 2011
+10, Nature Methods, Research, 2010
+10, Nature Reviews Microbiology, Reviews, 2003
+10, Nature Reviews Microbiology, News, 2004
+10, Nature Reports Climate Change, Research Highlights, 2008
+10, Nature Chemical Biology, Reviews, 2006
+10, Nature Geoscience, Research, 2014
+10, Scientific American, None, 2014
+10, Nature, None, 2008
+10, Nature, Reviews, 1999
+9, Nature Chemical Biology, Research, 2010
+9, Nature Reviews Microbiology, News, 2011
+9, Nature Chemical Biology, News and Views, 2009
+9, Nature Chemical Biology, Research, 2008
+9, Nature Chemistry, Research, 2012
+9, Nature Chemistry, Comments and Opinion, 2010
+8, Nature Methods, Research, 2014
+8, Nature Reviews Microbiology, News, 2006
+8, Nature Climate Change, Comments and Opinion, 2013
+8, Nature Reports Climate Change, Research Highlights, 2009
+8, Nature Geoscience, News and Views, 2009
+8, Nature, Reviews, 2010
+8, Nature, None, 1999
+8, Scientific American, Comments and Opinion, 2008
+8, Nature Climate Change, News and Views, 2013
+8, Nature Geoscience, News and Views, 2010
+7, Nature Reviews Microbiology, Research Highlights, 2007
+7, Nature, Reviews, 2009
+7, Nature Reviews Microbiology, News, 2005
+7, Nature Reviews Microbiology, News, 2009
+7, Nature Chemical Biology, Reviews, 2007
+7, Nature, None, 2005
+7, Nature Reports Climate Change, Comments and Opinion, 2009
+7, Nature Climate Change, Research Highlights, 2011
+7, Scientific American, Research, 2003
+7, Nature Methods, Research, 2007
+7, Nature Geoscience, Reviews, 2009
+7, Nature Climate Change, News and Views, 2012
+7, Nature Geoscience, Reviews, 2013
+7, Nature, None, 2001
+7, Nature Chemistry, Comments and Opinion, 2013
+7, Nature Geoscience, News and Views, 2013
+7, Nature Geoscience, News and Views, 2011
+7, Nature, Editorial, 2003
+6, Nature Reviews Microbiology, News, 2010
+6, Nature Reviews Microbiology, News, 2012
+6, Nature, Research Highlights, 2005
+6, Nature Chemical Biology, Reviews, 2009
+6, Nature Chemistry, Research, 2009
+6, Nature Climate Change, Research Highlights, 2012
+6, Nature, Reviews, 2006
+6, Nature Climate Change, Comments and Opinion, 2014
+6, Nature Methods, Research, 2008
+6, Nature Chemical Biology, News and Views, 2010
+6, Scientific American, Research, 2008
+6, Nature Chemistry, Research, 2013
+6, Nature, Reviews, 2005
+6, Nature Chemistry, Comments and Opinion, 2011
+6, Nature Geoscience, Comments and Opinion, 2008
+6, Nature Geoscience, Correspondence, 2010
+6, Nature, Editorial, 2004
+5, Nature Geoscience, News, 2008
+5, Nature, Reviews, 1998
+5, Nature Reviews Microbiology, Research Highlights, 2008
+5, Nature Chemistry, Reviews, 2009
+5, Nature, Advertorial, 1998
+5, Nature, Research Highlights, 2007
+5, Nature News, News, 2013
+5, Nature Chemical Biology, News and Views, 2008
+5, Nature, Reviews, 2008
+5, Nature Chemical Biology, News and Views, 2007
+5, Nature Geoscience, News and Views, 2008
+5, Nature Geoscience, Comments and Opinion, 2010
+5, Nature, News, 2014
+5, Nature, Reviews, 2014
+5, Nature Chemistry, News and Views, 2011
+5, Scientific American, Research, 2001
+5, Nature Chemical Biology, Reviews, 2010
+5, Nature Methods, Research, 2005
+5, Nature Geoscience, Reviews, 2008
+5, Scientific American, Comments and Opinion, 2007
+5, Nature Chemistry, Research Highlights, 2010
+5, Scientific American, Special Features, 2014
+5, Nature Chemical Biology, Comments and Opinion, 2010
+5, Scientific American, Research, 2009
+5, Nature, Editorial, 2011
+5, Nature Chemistry, Research, 2010
+5, Nature, None, 2002
+5, Nature Climate Change, News, 2011
+5, Nature, Reviews, 2002
+5, Nature, Reviews, 2000
+5, Nature, None, 2000
+5, The ISME Journal, None, 2007
+5, Nature, Editorial, 2007
+4, Nature News, News, 2002
+4, Nature News, News, 2000
+4, Nature Chemical Biology, Research Highlights, 2011
+4, Nature Geoscience, Editorial, 2010
+4, Nature Geoscience, Editorial, 2013
+4, Nature Geoscience, Reviews, 2012
+4, Nature Geoscience, Research Highlights, 2010
+4, Nature, Advertorial, 1999
+4, Scientific American, Research, 2011
+4, Nature Reports Climate Change, Research Highlights, 2007
+4, Nature Climate Change, Correspondence, 2012
+4, Nature, Reviews, 2001
+4, Nature Climate Change, Reviews, 2011
+4, Nature Climate Change, Editorial, 2012
+4, Nature Geoscience, Comments and Opinion, 2013
+4, Nature Reviews Microbiology, Research Highlights, 2005
+4, Scientific American, Reviews, 2010
+4, Nature Chemical Biology, Research, 2005
+4, Nature Reviews Microbiology, Research Highlights, 2011
+4, Nature Reviews Microbiology, Research Highlights, 2012
+4, Nature News, News, 2012
+4, Nature Reviews Microbiology, Research Highlights, 2004
+4, Nature, Correspondence, 2011
+4, Scientific American, Research, 2002
+4, Nature Chemical Biology, Reviews, 2013
+4, Nature Chemical Biology, Reviews, 2011
+4, Nature Geoscience, News and Views, 2012
+4, Nature Climate Change, Special Features, 2011
+4, The ISME Journal, Comments and Opinion, 2008
+4, Nature Chemical Biology, News and Views, 2011
+4, Nature Reviews Microbiology, Editorial, 2006
+4, Nature Geoscience, Reviews, 2010
+4, Nature, Reviews, 2007
+4, Nature Methods, Reviews, 2006
+4, Nature News, News, 1999
+4, Nature Reports Climate Change, Comments and Opinion, 2007
+4, Nature, Special Features, 2010
+4, Nature, Editorial, 2005
+4, Nature, Editorial, 2006
+3, Nature Geoscience, News, 2009
+3, Nature Reviews Microbiology, Research Highlights, 2014
+3, Nature Reviews Microbiology, Research Highlights, 2009
+3, Nature Reports Climate Change, News, 2009
+3, Nature News, News, 2001
+3, Nature Chemical Biology, Research Highlights, 2013
+3, Nature Geoscience, Research Highlights, 2012
+3, Nature Geoscience, Research Highlights, 2013
+3, Nature Reviews Microbiology, Correspondence, 2009
+3, Nature Reviews Microbiology, Correspondence, 2008
+3, Nature Chemistry, Special Features, 2009
+3, Nature Reviews Microbiology, Correspondence, 2006
+3, Nature Chemical Biology, Reviews, 2008
+3, Nature Climate Change, Correspondence, 2013
+3, Nature Chemical Biology, News and Views, 2006
+3, Nature Reviews Microbiology, Editorial, 2013
+3, Nature Methods, News, 2013
+3, Nature Geoscience, Comments and Opinion, 2012
+3, Nature Methods, Research Highlights, 2011
+3, The ISME Journal, Reviews, 2012
+3, Nature Reviews Microbiology, Research Highlights, 2010
+3, Nature Chemistry, News and Views, 2012
+3, Nature Chemical Biology, News and Views, 2005
+3, Nature, Correspondence, 2013
+3, Nature, Correspondence, 2010
+3, Scientific American, Research, 2005
+3, Nature Methods, Research Highlights, 2006
+3, Nature Methods, Editorial, 2011
+3, Scientific American, Reviews, 1999
+3, Nature Geoscience, Reviews, 2011
+3, Nature Chemistry, Research Highlights, 2014
+3, The ISME Journal, Comments and Opinion, 2010
+3, Nature Chemistry, Research Highlights, 2012
+3, The ISME Journal, Comments and Opinion, 2007
+3, Nature Reviews Microbiology, Editorial, 2009
+3, Nature Methods, News, 2006
+3, Nature Chemical Biology, News and Views, 2012
+3, Nature Chemistry, Research, 2014
+3, Nature Methods, News, 2005
+3, Nature Climate Change, News, 2013
+3, Nature, None, 2003
+3, Nature Chemical Biology, News and Views, 2013
+3, Nature Reviews Microbiology, Research Highlights, 2006
+3, Nature Geoscience, Special Features, 2012
+3, Nature Reviews Microbiology, Comments and Opinion, 2004
+3, Nature Geoscience, Comments and Opinion, 2009
+3, Nature Geoscience, News and Views, 2014
+3, Scientific American, Research, 2007
+3, Nature, Special Features, 2013
+3, Nature, Special Features, 2012
+2, Nature, None, 2004
+2, Nature Chemistry, Comments and Opinion, 2014
+2, Nature Chemical Biology, Editorial, 2009
+2, Nature News, News, 2005
+2, Nature News, News, 2004
+2, Nature News, News, 2003
+2, Nature Chemical Biology, Research Highlights, 2010
+2, Nature Geoscience, Editorial, 2011
+2, Nature Geoscience, Editorial, 2008
+2, Nature Geoscience, Reviews, 2014
+2, Nature Methods, Editorial, 2006
+2, Nature Methods, Editorial, 2008
+2, Nature Methods, Editorial, 2009
+2, Nature Reports Climate Change, Special Features, 2009
+2, Nature Chemistry, News and Views, 2013
+2, Scientific American, Research, 2013
+2, Scientific American, Research, 2012
+2, Nature Chemical Biology, Comments and Opinion, 2009
+2, Nature Methods, Reviews, 2010
+2, The ISME Journal, None, 2010
+2, Nature Climate Change, Correspondence, 2014
+2, Nature, Reviews, 2003
+2, Nature Methods, News and Views, 2007
+2, Scientific American, Comments and Opinion, 2011
+2, Scientific American, Research, 2010
+2, Nature, Reviews, 2004
+2, Nature Reports Climate Change, Comments and Opinion, 2008
+2, Nature Reviews Microbiology, Editorial, 2010
+2, Nature Reviews Microbiology, Editorial, 2011
+2, Nature Methods, News and Views, 2005
+2, Nature Chemical Biology, Comments and Opinion, 2007
+2, Nature Chemical Biology, Comments and Opinion, 2006
+2, Nature Geoscience, Research Highlights, 2008
+2, Nature, Research Highlights, 2006
+2, Nature Chemistry, Comments and Opinion, 2009
+2, Nature, Research Highlights, 2004
+2, Scientific American, News, 2000
+2, Nature Geoscience, Comments and Opinion, 2011
+2, Nature Climate Change, Research Highlights, 2013
+2, Nature, Advertorial, 2000
+2, Nature, Advertorial, 2001
+2, Nature, Advertorial, 2002
+2, Nature Climate Change, Special Features, 2012
+2, Nature Methods, Correspondence, 2012
+2, Nature Methods, Reviews, 2012
+2, Scientific American, Reviews, 1998
+2, Nature Climate Change, Special Features, 2013
+2, Scientific American, Comments and Opinion, 2009
+2, The ISME Journal, Reviews, 2013
+2, Nature Chemical Biology, Editorial, 2008
+2, Nature Reports Climate Change, Special Features, 2007
+2, Scientific American, Research, 2004
+2, Nature Chemical Biology, News, 2005
+2, Scientific American, Comments and Opinion, 2000
+2, Nature Chemistry, Reviews, 2013
+2, Nature Reviews Microbiology, News, 2013
+2, Nature, Correspondence, 2014
+2, Nature Methods, Comments and Opinion, 2012
+2, Nature Reviews Microbiology, Correspondence, 2010
+2, Nature Reviews Microbiology, Correspondence, 2011
+2, Nature Methods, Research Highlights, 2007
+2, Nature Chemical Biology, Reviews, 2014
+2, Nature Chemical Biology, Reviews, 2012
+2, Nature Reviews Microbiology, Comments and Opinion, 2005
+2, Nature Geoscience, Editorial, 2014
+2, Nature Methods, Research, 2004
+2, Nature Chemistry, Editorial, 2010
+2, Nature Methods, Research Highlights, 2008
+2, Nature Chemical Biology, Comments and Opinion, 2012
+2, Nature Reviews Microbiology, Editorial, 2008
+2, Nature Reviews Microbiology, Editorial, 2004
+2, Nature Climate Change, News and Views, 2014
+2, Nature Methods, News, 2007
+2, Nature Methods, News and Views, 2010
+2, Nature Reports Climate Change, News, 2008
+2, Nature Methods, Advertorial, 2006
+2, Scientific American, Comments and Opinion, 1999
+2, The ISME Journal, Reviews, 2008
+2, Nature, None, 2009
+2, Nature Climate Change, News, 2012
+2, Nature Methods, Correspondence, 2008
+2, Nature, Editorial, 2009
+2, Scientific American, Reviews, 2005
+2, Scientific American, Reviews, 2002
+2, Nature Reports Climate Change, Editorial, 2009
+2, Nature Methods, Reviews, 2009
+2, The ISME Journal, None, 2008
+2, Nature Chemical Biology, Editorial, 2005
+1, Nature Reviews Microbiology, Comments and Opinion, 2007
+1, Nature Reports Climate Change, News, 2007
+1, Nature Reviews Microbiology, Research, 2007
+1, Nature Reviews Microbiology, Research, 2008
+1, Nature Reviews Microbiology, Research, 2009
+1, Nature Methods, Advertorial, 2009
+1, Nature Methods, Research Highlights, 2014
+1, Nature Reviews Microbiology, Research, 2013
+1, Scientific American, Comments and Opinion, 2013
+1, Nature Methods, Research Highlights, 2012
+1, Nature Geoscience, Research, 2007
+1, Nature, None, 2010
+1, Nature News, News, 2007
+1, Nature News, News, 2006
+1, Nature Chemical Biology, Research Highlights, 2012
+1, Nature Chemical Biology, Special Features, 2009
+1, Nature Reviews Microbiology, Research, 2012
+1, Nature Geoscience, Correspondence, 2009
+1, Nature Methods, Editorial, 2007
+1, Nature Methods, Editorial, 2005
+1, Nature Methods, News and Views, 2006
+1, Nature Geoscience, Research Highlights, 2014
+1, Nature Chemistry, News and Views, 2010
+1, Nature Climate Change, Correspondence, 2011
+1, Nature Geoscience, News, 2010
+1, Nature Chemical Biology, Reviews, 2005
+1, Nature Methods, Reviews, 2011
+1, Nature Reviews Microbiology, Comments and Opinion, 2014
+1, The ISME Journal, None, 2014
+1, Nature Chemical Biology, Editorial, 2010
+1, Nature Methods, Protocols, 2006
+1, Nature, Amendments and Corrections, 2010
+1, Nature Methods, Protocols, 2005
+1, Nature, Editorial, 2013
+1, Nature Reviews Microbiology, Comments and Opinion, 2011
+1, Nature Climate Change, Reviews, 2014
+1, Nature Geoscience, Special Features, 2008
+1, Nature Geoscience, Special Features, 2009
+1, Nature, Special Features, 2011
+1, Nature Chemical Biology, Editorial, 2011
+1, Nature Climate Change, Editorial, 2011
+1, Nature Climate Change, Editorial, 2013
+1, Nature Climate Change, Editorial, 2014
+1, Nature Chemical Biology, Special Features, 2006
+1, Nature Reviews Microbiology, Editorial, 2012
+1, Nature Geoscience, Research Highlights, 2009
+1, Nature Methods, News, 2014
+1, Nature Methods, News, 2010
+1, Nature Methods, News, 2011
+1, Nature Methods, News, 2012
+1, Scientific American, News, 2002
+1, Nature, Correspondence, 2006
+1, The ISME Journal, None, 2009
+1, Nature Climate Change, Research Highlights, 2014
+1, Nature, Correspondence, 2008
+1, Scientific American, Comments and Opinion, 2006
+1, Nature Methods, Reviews, 2013
+1, Nature, Advertorial, 2003
+1, Nature Reviews Microbiology, None, 2010
+1, Scientific American, Reviews, 2006
+1, The ISME Journal, Comments and Opinion, 2011
+1, Nature Chemical Biology, News, 2008
+1, Nature, None, 2006
+1, Nature Communications, Reviews, 2010
+1, Nature Climate Change, Special Features, 2014
+1, The ISME Journal, Reviews, 2010
+1, Nature Chemistry, News and Views, 2009
+1, Nature, Amendments and Corrections, 1999
+1, Scientific American, Reviews, 2001
+1, Nature News, News, 2014
+1, Nature Climate Change, Amendments and Corrections, 2011
+1, Nature Chemical Biology, News, 2007
+1, Nature Chemical Biology, News, 2006
+1, Nature Chemical Biology, News, 2009
+1, Nature Chemistry, Reviews, 2011
+1, Nature Chemistry, Reviews, 2010
+1, Nature Chemistry, Reviews, 2012
+1, Nature, Correspondence, 2012
+1, The ISME Journal, None, 2012
+1, Nature Methods, Research Highlights, 2005
+1, Nature Geoscience, Comments and Opinion, 2014
+1, Nature Methods, Comments and Opinion, 2014
+1, Nature Reports Climate Change, Editorial, 2007
+1, Nature Reviews Microbiology, None, 2006
+1, Nature Reviews Microbiology, Correspondence, 2012
+1, Nature, Books and Arts, 2004
+1, Scientific American, Research, 2006
+1, Nature Reports Climate Change, Research Highlights, 2010
+1, Nature Methods, Advertorial, 2011
+1, Nature Methods, Advertorial, 2010
+1, Nature Methods, Advertorial, 2012
+1, Nature Methods, Reviews, 2008
+1, Nature Methods, Editorial, 2013
+1, Nature, Amendments and Corrections, 2012
+1, Nature Methods, Research Highlights, 2004
+1, Nature Methods, News, 2009
+1, Nature Chemistry, News, 2011
+1, Nature Reviews Microbiology, Special Features, 2008
+1, Nature Communications, Amendments and Corrections, 2013
+1, Nature Methods, News and Views, 2008
+1, The ISME Journal, Comments and Opinion, 2009
+1, Nature Methods, Research Highlights, 2010
+1, Nature Reviews Microbiology, Special Features, 2007
+1, Nature Reviews Microbiology, Editorial, 2007
+1, Nature Chemistry, News, 2012
+1, Nature Reviews Microbiology, Editorial, 2003
+1, Nature Chemical Biology, Comments and Opinion, 2013
+1, Nature Methods, News and Views, 2014
+1, Nature Methods, News and Views, 2013
+1, Nature Methods, News and Views, 2012
+1, Scientific American, Comments and Opinion, 1998
+1, Nature Chemical Biology, Comments and Opinion, 2011
+1, The ISME Journal, Reviews, 2009
+1, Nature Methods, Comments and Opinion, 2005
+1, Nature, Special Features, 1999
+1, Nature Geoscience, Correspondence, 2011
+1, Nature Methods, Comments and Opinion, 2008
+1, Nature Reviews Microbiology, Editorial, 2005
+1, The ISME Journal, Amendments and Corrections, 2014
+1, Nature Methods, Advertorial, 2005
+1, Nature, Amendments and Corrections, 2002
+1, Nature, Amendments and Corrections, 2000
+1, Nature, Amendments and Corrections, 2007
+1, Nature, Amendments and Corrections, 2004
+1, Nature Reports Climate Change, Comments and Opinion, 2010
+1, Nature Methods, Correspondence, 2006
+1, Nature Methods, Correspondence, 2005
+1, Nature Reviews Microbiology, Comments and Opinion, 2003
+1, Nature Methods, Correspondence, 2009
+1, Nature, Amendments and Corrections, 2009
+1, Scientific American, Reviews, 2003
+1, Scientific American Mind, None, 2010
+1, Nature Reviews Microbiology, None, 2005
+1, Nature Methods, Reviews, 2005
+1, Nature Methods, Reviews, 2007
+1, Nature Chemistry, Comments and Opinion, 2012
+1, Nature Reviews Microbiology, None, 2009
+1, Nature Reports Climate Change, News, 2010
+1, Nature Geoscience, Correspondence, 2012
+1, Nature Geoscience, Editorial, 2009
+1, Nature Reviews Microbiology, Comments and Opinion, 2009
