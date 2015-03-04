@@ -15,17 +15,16 @@ logging.getLogger("requests.packages.urllib3.connectionpool").setLevel(logging.W
 # It seems that restricting search to dc.title or dc.description gives a
 # recall much lower than expected, so use cql.keywords instead.
 # Publications after 1997, because before that much is in PDF.
+# Undocumented API feature: "==" forces exact matching 
 
 query_template =  """
-cql.keywords = "{term}" AND
+cql.keywords == "{term}" AND
 ( prism.publicationName = "Nature" OR
   prism.publicationName = "Nature Chemistry" OR
   prism.publicationName = "Nature Chemical Biology" OR
   prism.publicationName = "Nature Climate Change" OR 
   prism.publicationName = "Nature Communications" OR
   prism.publicationName = "Nature Geoscience" OR
-  prism.publicationName = "Nature Methods" OR
-  prism.publicationName = "Nature Protocols" OR
   prism.publicationName = "Scientific American" OR
   prism.publicationName = "Scientific Reports" OR
   prism.publicationName = "Nature Reviews Microbiology" OR
@@ -34,12 +33,15 @@ cql.keywords = "{term}" AND
 prism.publicationDate > {after_year} 
 """
 
+query_template = " ".join(query_template.split())
+
+
 def search_npg(results_fname, 
-           records_dir,
-           terms_fname=None, 
-           max_records=5000,
-           url = 'http://api.nature.com/content/opensearch/request',
-           after_year = 1997):
+               records_dir,
+               terms_fname=None, 
+               max_records=None,
+               url = 'http://api.nature.com/content/opensearch/request',
+               after_year = 1997):
     """
     Retrieve records from Nature publications matching search terms.  
     
@@ -61,8 +63,9 @@ def search_npg(results_fname,
         otherwise search process will continue with terms as stored in 
         results_fname 
     
-    max_records: int
-        limit on number of result records per query (search term)
+    max_records: int, optional
+        limit on number of result records per query (search term);
+        None means unlimited
     """    
     
     if terms_fname:
@@ -93,7 +96,7 @@ def search_npg(results_fname,
                 'maximumRecords': 100
             }
             
-            while n_records < max_records:
+            while True:
                 response = requests.get(url, params=params)
                 result = response.json()    
                 
@@ -177,8 +180,6 @@ Nature Publishing Group:</p>
 <li>Nature Climate Change</li>
 <li>Nature Communications</li>
 <li>Nature Geoscience</li>
-<li>Nature Methods</li>
-<li>Nature Protocols</li>
 <li>Scientific American</li>
 <li>Scientific Reports</li>
 <li>Nature Reviews Microbiology</li>
