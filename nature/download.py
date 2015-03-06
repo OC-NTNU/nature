@@ -24,6 +24,6 @@ def download_webpages(results_fname, out_dir, full_max_n):
             # content is utf-8
             with open(out_fname, 'w') as outf:
                 log.info("writing " + out_fname)
-                outf.write(response.content)
+                outf.write(response.text)
         else:
             log.info("skipping existing " + out_fname)
