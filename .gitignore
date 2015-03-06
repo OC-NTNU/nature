@@ -3,11 +3,10 @@ records/*
 bib/*
 *.pkl
 terms.txt
-set_env.sh
 full/*
 missing-mappings.txt
 search_results.*
-
+tmp/*
 
 
 

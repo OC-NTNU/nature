@@ -14,7 +14,7 @@ class CoreNLP(object):
     
     def __init__(self,
                  lib_dir=getenv("CORENLP_HOME", "/Users/erwin/local/src/corenlp"),
-                 lib_ver=getenv("CORENLP_VER", "3.4.1"),
+                 lib_ver=getenv("CORENLP_VER", "3.5.1"),
                  corenlp_class="edu.stanford.nlp.pipeline.StanfordCoreNLP"):
         self.lib_dir = lib_dir
         self.lib_ver = lib_ver
