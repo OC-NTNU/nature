@@ -186,11 +186,11 @@ Nature Publishing Group:</p>
 <li>The ISME Journal</li>
 </ol>
 
-<p>for articles after 1997 matching any of the 305
+<p>for articles after 1997 matching any of the {terms_n}
 predefined <a href="terms.txt">search terms</a>. Search was conducted
 using NPG's search API. Results are ranked according to the number of
-matching search terms in descending order. Only the top 5000 results
-from the total of matching 60,156 articles are shown.</p>
+matching search terms in descending order. Only the top {top_n} results
+from the total of matching {matches_n} articles are shown.</p>
 
 <hr>
 
@@ -200,9 +200,9 @@ template = """
 <p>
 {}) {} <br>
 <a href="{}">{}</a> <br>
-In: <i>{}</i>, {}
-<i>{}</i>
-<b>{}</b> search term matches: {} <br>
+In: <i>{}</i>, {} <br>
+<i>{}</i> <br>
+<b>{}</b> earch term matches: {} <br>
 </p>
 <hr>
 """
@@ -212,12 +212,13 @@ trailer =  """
 </html>
 """
 
-def results_to_html(results_fname, records_dir, html_fname):    
+def results_to_html(results_fname, records_dir, html_fname, top_n=5000):    
     tab = pd.read_pickle(results_fname)
     with open(html_fname, "wt") as outf:
-        outf.write(header)
+        outf.write(header.format(terms_n=tab.shape[1], matches_n=tab.shape[0],
+                                 top_n=top_n))
         
-        for n, doi in enumerate(tab.index):
+        for n, doi in enumerate(tab.index[:top_n]):
             fname = join(records_dir, doi.replace("/", "#") + ".json")
             if not exists(fname):
                 log.warn("no record for " + doi)
@@ -237,7 +238,7 @@ def results_to_html(results_fname, records_dir, html_fname):
                 head["dc:title"],
                 head['prism:publicationName'],
                 head['prism:publicationDate'],
-                head["dc:description"],
+                head["dc:description"] or "<p></p>",
                 tab.ix[doi].sum(),
                 ", ".join(tab.ix[doi][select].index) ))
         
