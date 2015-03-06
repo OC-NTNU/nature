@@ -20,7 +20,7 @@ template = ('<?xml version="1.0" encoding="UTF-8"?>\n'
             "</abstract>\n" )
 
 
-def extract_abstracts(results_fname, rec_dir, abs_dir, abs_max_n):
+def extract_abstracts(results_fname, rec_dir, abs_dir, match_min_n=1, abs_max_n=None):
     """
     Extract abstracts (title + description) from publication records
     
@@ -33,15 +33,21 @@ def extract_abstracts(results_fname, rec_dir, abs_dir, abs_max_n):
     abs_dir: str
         directory for writing abstracts in xml format
         
-    abs_max_n: int
+    match_min_n: int or None
+        required minimal number of matching keywords
+        
+    abs_max_n: int or None
         maximum number of abstracts
 
     Outputs xml including original html markup, utf-8 encoded.
     """    
     make_dir(abs_dir)
-    tab = pd.read_pickle(results_fname)  
+    tab = pd.read_pickle(results_fname)
     
-    for doi in tab.index[:abs_max_n]:
+    for doi, row in tab[:abs_max_n].iterrows():
+        if row.sum() < match_min_n:
+            break
+        
         doi = doi.replace("/", "#")
         rec_fname = new_name(doi, rec_dir, ".json", strip_ext=[""])
         entry = json.load(open(rec_fname, "rt"))
