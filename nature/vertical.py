@@ -1,7 +1,7 @@
 from lxml.etree import ElementTree
 from json import load
 
-from os.path import basename, join
+from os.path import basename, join, exists
 
 from nature.utils import make_dir, file_list, new_name, strip_xml
 
@@ -39,29 +39,34 @@ def convert_full_to_vertical_format(scnlp_files, records_dir, vert_dir):
     
     
 
-def convert_to_vertical_format(scnlp_files, records_dir, vert_dir, write_body):
+def convert_to_vertical_format(scnlp_files, records_dir, vert_dir,
+                               write_body, resume=False):
     """
     convert to vertical format of Sketch Engine
     """
     make_dir(vert_dir)
     
     for scnlp_fname in file_list(scnlp_files, "*.xml"):
-        try:
-            vert_fname = new_name(scnlp_fname, vert_dir, ".vert", strip_ext=["xml"])
-            log.info("writing " + vert_fname)
+        vert_fname = new_name(scnlp_fname, vert_dir, ".vert", strip_ext=["xml"])
             
-            with open(vert_fname, "wt") as vert_file:
-                write_header(vert_file, records_dir, scnlp_fname)
-                tree = ElementTree(file=scnlp_fname)            
-                write_body(vert_file, tree)
-                # close header
-                vert_file.write("</doc>\n")    
-        except Exception:
-            # catch any weird errors (e.g. ill-formed XML in record's title) 
-            # and just continue
-            log.exception("Something went wrong...")
-            log.error("Skipped file " + scnlp_fname)
-
+        if resume and exists(vert_fname):                
+            log.info("skipping existing " + vert_fname)
+        else:
+            try:
+                with open(vert_fname, "wt") as vert_file:
+                    write_header(vert_file, records_dir, scnlp_fname)
+                    tree = ElementTree(file=scnlp_fname)            
+                    write_body(vert_file, tree)
+                    # close header
+                    vert_file.write("</doc>\n")    
+            except Exception:
+                # catch any weird errors (e.g. ill-formed XML in record's title) 
+                # and just continue
+                log.exception("Something went wrong...")
+                log.error("Skipped file " + scnlp_fname)
+            else:
+                log.info("wrote " + vert_fname)
+    
 
 def write_abs_body(vert_file, tree):
     for n, sent in enumerate(tree.findall(".//tokens")):
