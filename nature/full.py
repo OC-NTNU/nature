@@ -29,6 +29,9 @@ def extract_content(htm_files, xml_dir):
     for htm_fname in file_list(htm_files):
         tree   = etree.parse(htm_fname, parser)
         
+        if not tree.getroot():
+            log.warning('skipping: no html content in ' + htm_fname)
+            continue            
         # check if license allows full text access
         meta_elem = tree.xpath("//meta[@name='Access' or @name='access']")
         if not meta_elem:
