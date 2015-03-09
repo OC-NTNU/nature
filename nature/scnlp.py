@@ -46,7 +46,8 @@ class CoreNLP(object):
                 'stanford-corenlp-{}.jar'.format(self.lib_ver),
                 'stanford-corenlp-{}-models.jar'.format(self.lib_ver),
                 'xom.jar',
-                'ejml-0.23.jar']
+                'ejml-0.23.jar',
+                'stanford-srparser-2014-10-23-models.jar']
         class_path = ":".join(join(self.lib_dir, j) for j in jars)
         
         if stamp:
