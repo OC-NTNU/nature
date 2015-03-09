@@ -24,18 +24,18 @@ def undo_escape(s):
     return UNESCAPE.get(s.lower(), s)
 
 
-def convert_abs_to_vertical_format(scnlp_files, records_dir, vert_dir):
+def convert_abs_to_vertical_format(scnlp_files, records_dir, vert_dir, resume=False):
     """
     convert abstracts to vertical format of Sketch Engine
     """
-    convert_to_vertical_format(scnlp_files, records_dir, vert_dir, write_abs_body)
+    convert_to_vertical_format(scnlp_files, records_dir, vert_dir, write_abs_body, resume)
 
 
-def convert_full_to_vertical_format(scnlp_files, records_dir, vert_dir):
+def convert_full_to_vertical_format(scnlp_files, records_dir, vert_dir, resume=False):
     """
     convert full text to vertical format of Sketch Engine
     """
-    convert_to_vertical_format(scnlp_files, records_dir, vert_dir, write_full_body)
+    convert_to_vertical_format(scnlp_files, records_dir, vert_dir, write_full_body, resume)
     
     
 
