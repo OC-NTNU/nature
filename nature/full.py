@@ -20,7 +20,7 @@ def extract_content(htm_files, xml_dir):
     that it seems impossble to write general filtering rules.
     
     In addition, the HTML is often ill-formed, so this also converts to
-    (syntactically) well-formed XML, suitable as nput to nxml2txt.
+    (syntactically) well-formed XML, suitable as input to nxml2txt.
     """
     make_dir(xml_dir)
     parser = HTMLParser(recover=True, remove_comments=True,
@@ -35,7 +35,7 @@ def extract_content(htm_files, xml_dir):
         # check if license allows full text access
         meta_elem = tree.xpath("//meta[@name='Access' or @name='access']")
         if not meta_elem:
-            # If there is not meta tag, this means sone technical error such as
+            # If there is not meta tag, this means some technical error such as
             # DOI not found or server problems
             log.warning('skipping: no <meta name="access" ...> in ' + htm_fname)
             continue
