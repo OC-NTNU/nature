@@ -78,15 +78,15 @@ def preproc_full(clean=False):
     if clean:
         remove_any(FULL_HTM_DIR)    
         
-    ##download_webpages(RESULTS_FILE, FULL_HTM_DIR, FULL_MAX_N)
-    ##extract_content(FULL_HTM_DIR, FULL_XML_DIR)
-    ##convert_to_soa(NXML2TXT, FULL_XML_DIR, FULL_SOA_DIR)
+    #download_webpages(RESULTS_FILE, FULL_HTM_DIR, FULL_MAX_N)
+    #extract_content(FULL_HTM_DIR, FULL_XML_DIR)
+    #convert_to_soa(NXML2TXT, FULL_XML_DIR, FULL_SOA_DIR)
     CORE_NLP.run(FULL_SOA_DIR + "/*.txt", 
                  FULL_SCNLP_DIR,
                  annotators="tokenize,ssplit,pos,lemma,parse",
-                 ##memory="64g",
-                 ##threads=16,
-                 options=" -ssplit.newlineIsSentenceBreak always",
+                 memory="64g",
+                 threads=16,
+                 options=" -ssplit.newlineIsSentenceBreak always -parse.model edu/stanford/nlp/models/srparser/englishSR.beam.ser.gz",
                  resume=True
                  )
     
@@ -108,10 +108,10 @@ def preproc_abstracts(clean=False, debug=False):
                    ABS_BRAT_DIR,
                    ABS_RANK_DIR)
         
-    #extract_abstracts(RESULTS_FILE, RECORDS_DIR, ABS_XML_DIR,
-    #                  ABS_MATCH_MIN_N, abs_max_n)
-    #lookup_bibtex(ABS_XML_DIR, BIB_DIR)
-    #convert_to_soa(NXML2TXT, ABS_XML_DIR, ABS_SOA_DIR)
+    extract_abstracts(RESULTS_FILE, RECORDS_DIR, ABS_XML_DIR,
+                     ABS_MATCH_MIN_N, abs_max_n)
+    lookup_bibtex(ABS_XML_DIR, BIB_DIR)
+    convert_to_soa(NXML2TXT, ABS_XML_DIR, ABS_SOA_DIR)
     CORE_NLP.ssplit(ABS_SOA_DIR + "/*.txt", TMP_SCNLP_DIR)
     split_sent(ABS_SOA_DIR, TMP_SCNLP_DIR, ABS_SENT_DIR)
     CORE_NLP.parse(ABS_SENT_DIR, ABS_SCNLP_DIR)
@@ -135,7 +135,8 @@ if __name__ == "__main__":
     
     #results_to_html(RESULTS_FILE, RECORDS_DIR, HTM_RESULTS_FILE, None)
     
-    preproc_abstracts(clean=False, debug=False)
+    #preproc_abstracts(clean=False, debug=False)
+    preproc_full()
     #make_vertical_corpus()
     #FULL_HTM_FILES = "full/htm/10.1038#nature*"
     #preproc_full()
