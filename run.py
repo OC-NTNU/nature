@@ -17,9 +17,10 @@ from nature.scnlp import CoreNLP
 from nature.sent import split_sent
 from nature.brat import make_brat_files, rank_brat_files
 from nature.bibtex import lookup_bibtex
-from nature.vertical import convert_abs_to_vertical_format, convert_full_to_vertical_format
+from nature.vertical import ( convert_abs_to_vertical_format, 
+                              convert_full_to_vertical_format )
 from nature.full import extract_content
-from nature.parse import extract_lemmatized_parse_trees
+from nature.parse import extract_parse_trees, extract_lemmatized_parse_trees
 
 NXML2TXT = getenv("NXML2TXT", "./nxml2txt_py2")
 
@@ -36,7 +37,8 @@ ABS_SCNLP_DIR = "abstracts/scnlp"
 ABS_SENT_DIR = "abstracts/sent"
 ABS_BRAT_DIR = "abstracts/brat"
 ABS_RANK_DIR = "abstracts/rank"
-ABS_PARSE_DIR = "abstracts/parse"
+ABS_PARSE_WORD_DIR = "abstracts/lemmaparse"
+ABS_PARSE_LEMMA_DIR = "abstracts/wordparse"
 ABS_MATCH_MIN_N = 3
 
 TMP_SCNLP_DIR = "tmp"
@@ -125,7 +127,8 @@ def make_vertical_corpus():
     convert_full_to_vertical_format(FULL_SCNLP_DIR, RECORDS_DIR, FULL_VERT_DIR)
     
 def make_parse_trees():    
-    extract_lemmatized_parse_trees(ABS_SCNLP_DIR, ABS_PARSE_DIR)
+    extract_parse_trees(ABS_SCNLP_DIR, ABS_PARSE_WORD_DIR)
+    extract_lemmatized_parse_trees(ABS_SCNLP_DIR, ABS_PARSE_LEMMA_DIR)
 
  
 if __name__ == "__main__":
