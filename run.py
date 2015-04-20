@@ -19,7 +19,7 @@ from nature.brat import make_brat_files, rank_brat_files
 from nature.bibtex import lookup_bibtex
 from nature.vertical import convert_abs_to_vertical_format, convert_full_to_vertical_format
 from nature.full import extract_content
-from nature.parse import extract_parse_trees
+from nature.parse import extract_lemmatized_parse_trees
 
 NXML2TXT = getenv("NXML2TXT", "./nxml2txt_py2")
 
@@ -125,7 +125,7 @@ def make_vertical_corpus():
     convert_full_to_vertical_format(FULL_SCNLP_DIR, RECORDS_DIR, FULL_VERT_DIR)
     
 def make_parse_trees():    
-    extract_parse_trees(ABS_SCNLP_DIR, ABS_PARSE_DIR)
+    extract_lemmatized_parse_trees(ABS_SCNLP_DIR, ABS_PARSE_DIR)
 
  
 if __name__ == "__main__":
@@ -136,11 +136,11 @@ if __name__ == "__main__":
     #results_to_html(RESULTS_FILE, RECORDS_DIR, HTM_RESULTS_FILE, None)
     
     #preproc_abstracts(clean=False, debug=False)
-    preproc_full()
+    #preproc_full()
     #make_vertical_corpus()
     #FULL_HTM_FILES = "full/htm/10.1038#nature*"
     #preproc_full()
-    #make_parse_trees()
+    make_parse_trees()
 
 
 
