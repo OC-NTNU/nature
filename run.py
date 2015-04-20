@@ -37,8 +37,8 @@ ABS_SCNLP_DIR = "abstracts/scnlp"
 ABS_SENT_DIR = "abstracts/sent"
 ABS_BRAT_DIR = "abstracts/brat"
 ABS_RANK_DIR = "abstracts/rank"
-ABS_PARSE_WORD_DIR = "abstracts/lemmaparse"
-ABS_PARSE_LEMMA_DIR = "abstracts/wordparse"
+ABS_PARSE_WORD_DIR = "abstracts/wordparse"
+ABS_PARSE_LEMMA_DIR = "abstracts/lemmaparse"
 ABS_MATCH_MIN_N = 3
 
 TMP_SCNLP_DIR = "tmp"
