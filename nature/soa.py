@@ -42,6 +42,9 @@ from nature.utils import make_dir, file_list, new_name
 
 
 def convert_to_soa(nxml2txt, xml_files, soa_dir):
+    """
+    Convert to stand-off annotation
+    """
     make_dir(soa_dir)
     
     for xml_fname in file_list(xml_files):

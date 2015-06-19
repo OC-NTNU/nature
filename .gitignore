@@ -7,6 +7,11 @@ full/*
 missing-mappings.txt
 search_results.*
 tmp/*
+trial/*
+*.ini
+!nature-corpus.ini
+
+
 
 
 

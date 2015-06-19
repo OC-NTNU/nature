@@ -120,7 +120,7 @@ def search_npg(results_fname,
                         open(record_fname, "wt").write(string)
     
                     if n_records == max_records:
-                        log.warn(u'reached max number of records ({}) for term "{}"'.format(
+                        log.info(u'reached max number of records ({}) for term "{}"'.format(
                             n_records,
                             term))
                         break
@@ -202,7 +202,7 @@ template = """
 <a href="{}">{}</a> <br>
 In: <i>{}</i>, {} <br>
 <i>{}</i> <br>
-<b>{}</b> earch term matches: {} <br>
+<b>{}</b> search term matches: {} <br>
 </p>
 <hr>
 """
@@ -217,6 +217,8 @@ def results_to_html(results_fname, records_dir, html_fname, top_n=5000):
     Write ranked results to an html file
     """
     tab = pd.read_pickle(results_fname)
+    log.info("writing results in html format to file {!r}".format(html_fname))
+    
     with open(html_fname, "wt") as outf:
         outf.write(header.format(terms_n=tab.shape[1], matches_n=tab.shape[0],
                                  top_n=top_n))

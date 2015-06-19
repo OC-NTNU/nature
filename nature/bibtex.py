@@ -14,7 +14,7 @@ headers = {'Accept': 'text/bibliography; style=bibtex'}
 
 def lookup_bibtex(xml_files, bib_dir):
     """
-    Lookup bibtex citation for abstracts, using cross-ref API
+    Lookup bibtex citation for abstracts, using CrossRef web service
     
     See http://labs.crossref.org/citation-formatting-service/
     """

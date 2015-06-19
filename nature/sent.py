@@ -9,6 +9,9 @@ from nature.utils import make_dir, file_list, new_name
 
 
 def split_sent(txt_files, scnlp_dir, sent_dir):
+    """
+    Split sentences  
+    """
     make_dir(sent_dir)
     
     for txt_fname in file_list(txt_files, "*.txt"):

@@ -26,7 +26,7 @@ def make_dir(path):
     """
     make dir if it does not exists
     """
-    if not isdir(path):
+    if path and not isdir(path):
         log.info("creating dir {!r}".format(path))
         makedirs(path)
         
@@ -77,5 +77,13 @@ def strip_xml(s):
     strip all xml tags 
     """
     return tostring(fromstring("<x>" + s + "</x>"), method="text", encoding=str)
-    
-    
+
+
+def copy_doc(from_func, to_func, first_line_only=True):
+    """
+    copy doc string from another function
+    """
+    if first_line_only:
+        to_func.__doc__ = from_func.__doc__.strip().split("\n")[0] 
+    else:
+        to_func.__doc__ = from_func.__doc__
