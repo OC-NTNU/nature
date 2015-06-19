@@ -5,7 +5,6 @@ run initial steps to create Nature corpus
 """
 
 import logging as log
-from tempfile import TemporaryDirectory
 
 from argh import add_commands, dispatch, arg
 
@@ -19,10 +18,12 @@ DEFAULT_CONFIG_FNAME = "nature-corpus.ini"
 
 parser, cfg = get_parser_and_config(DEFAULT_CONFIG_FNAME)
 
-log.basicConfig(level=cfg.get("ABSTRACTS", "LOG_LEVEL", fallback="WARNING"))
 
 
 DEFAULT_SECTION = "DEFAULT"
+
+log.basicConfig(level=cfg.get(DEFAULT_SECTION, "LOG_LEVEL",
+                              fallback="WARNING"))
 
 def _(option):
     return get_option(cfg, DEFAULT_SECTION, option)
@@ -67,8 +68,9 @@ def html(results_file = _("RESULTS_FILE"),
 
 copy_doc(results_to_html, html)
 
-steps = [terms, search, rank, html]
+steps = [search, rank, html]
 
+optional = [terms]
 
 def run_all():
     for step in steps: step()
@@ -77,6 +79,6 @@ run_all.__doc__ = "Run complete  pipeline: {}".format(
     " --> ".join(s.__name__ for s in steps))
 
     
-add_commands(parser, steps + [run_all] )
+add_commands(parser, steps + optional + [run_all] )
 
 dispatch(parser)

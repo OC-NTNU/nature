@@ -1,3 +1,7 @@
+"""
+Stanford CoreNLP wrapper
+"""
+
 import logging
 log = logging.getLogger(__name__)
 
@@ -14,11 +18,9 @@ class CoreNLP(object):
     
     def __init__(self,
                  lib_dir=getenv("CORENLP_HOME", "/Users/erwin/local/src/corenlp"),
-                 lib_ver=getenv("CORENLP_VER", "3.5.1"),
-                 corenlp_class="edu.stanford.nlp.pipeline.StanfordCoreNLP"):
+                 lib_ver=getenv("CORENLP_VER", "3.5.1")):
         self.lib_dir = lib_dir
         self.lib_ver = lib_ver
-        self.corenlp_class = corenlp_class
     
     
     def run(self,
@@ -40,15 +42,7 @@ class CoreNLP(object):
         """
         make_dir(out_dir)        
         in_files = file_list(txt_files)  
-            
-        jars = ['joda-time.jar',
-                'jollyday.jar',
-                'stanford-corenlp-{}.jar'.format(self.lib_ver),
-                'stanford-corenlp-{}-models.jar'.format(self.lib_ver),
-                'xom.jar',
-                'ejml-0.23.jar',
-                'stanford-srparser-2014-10-23-models.jar']
-        class_path = ":".join(join(self.lib_dir, j) for j in jars)
+        class_path = '"{}"'.format(join(self.lib_dir, "*"))
         
         if stamp:
             replace_extension = True
@@ -66,9 +60,11 @@ class CoreNLP(object):
         tmp_file = NamedTemporaryFile("wt", buffering=1)
         tmp_file.write("\n".join(in_files) + "\n")                 
                  
-        cmd = ("java -Xmx{} -cp {} {} -annotators {} -filelist {} "
+        cmd = ("java -Xmx{} -cp {} "
+               "edu.stanford.nlp.pipeline.StanfordCoreNLP " 
+               "-annotators {} -filelist {} "
                "-outputDirectory {} -threads {} {}").format(
-                   memory, class_path, self.corenlp_class, annotators, 
+                   memory, class_path, annotators, 
                    tmp_file.name, out_dir, threads, options)
         
         log.info("\n" + cmd)

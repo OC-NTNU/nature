@@ -39,7 +39,7 @@ def rank_brat_files(results_fname, brat_dir, rank_dir, min_n_sent=6):
         try:
             txt_file = open(txt_fname)
         except IOError:
-            log.warn("no file " + txt_fname)
+            log.debug("no file " + txt_fname)
             continue
         
         n_sent = len(txt_file.readlines())
@@ -56,52 +56,3 @@ def rank_brat_files(results_fname, brat_dir, rank_dir, min_n_sent=6):
         for ext in ".txt", ".ann":
             log.info("creating ranked Brat file " + to_fname_prefix + ext)
             copy(from_fname_prefix + ext, to_fname_prefix + ext)
-        
-        
-        
-    
-    
-    
-    
-
-#import pandas as pd
-#import re
-
-#def abstracts_to_brat(results_fname, soa_dir, scnlp_dir, brat_dir, 
-    #scnlp_ftemplate="{}#{}#abs#corenlp_v3.4.1.xml", 
-    #min_n_sent=6):
-    #tab = pd.read_pickle(results_fname)
-    #n = 0
-    
-    #:
-        #scnlp_fname = join(scnlp_dir,
-                           #scnlp_ftemplate.format(doi.split("/")))
-        
-        #try:
-            #scnlp_xml = open(scnlp_fname).read()
-        #except FileNotFoundError:
-            #log.error(scnlp_fname + " does not exists")
-            #continue
-            
-        #n_sent = len(re.findall("<sentence", scnlp_dir))
-        #log.debug("{} contains {} sentences".format(scnlp_fname, n_sent))
-        
-        #txt_fname = join("brat", doi.replace("/","#") + "#abs.txt")
-        #if exists(txt_fname):
-            #sent = open(txt_fname).read().split("\n\n")
-            #sent = sent[0].split("\n") + sent[1:]
-            #if len(sent) >= min_sent:
-                #n += 1
-                #out_fname = "{:05d}#".format(n) + doi.replace("/","#") + "#abs"
-                #with open(join("manual", out_fname + ".txt"), "w") as f:
-                    #f.write("\n\n".join(sent))
-                #open(join("manual", out_fname + ".ann"), "w") 
-                #continue
-            
-        #print "SKIPPING", txt_fname 
-    
-    
-    
-    
-    
-    

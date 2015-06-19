@@ -61,7 +61,8 @@ def convert_to_soa(nxml2txt, xml_files, soa_dir):
                 log.error(err.returncode)
                 log.error(err.cmd)
                 log.error(err.output)
-            log.info(ret.decode("utf-8"))
+            if ret:
+                log.info(ret.decode("utf-8"))
         else:
             log.info("{} and {} already exists".format(txt_fname, soa_fname))
             
