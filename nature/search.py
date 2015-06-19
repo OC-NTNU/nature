@@ -96,7 +96,7 @@ def search_npg(results_fname,
                 'maximumRecords': 100
             }
             
-            while True:
+            while not max_records or n_records < max_records:
                 response = requests.get(url, params=params)
                 result = response.json()    
                 
@@ -149,7 +149,7 @@ def search_npg(results_fname,
 
 def rank_results(results_fname):
     """
-    rank results from most to least number of matching search terms  
+    Rank search results according to number of matching search terms  
     """
     tab = pd.read_pickle(results_fname)
     totals = tab.sum(axis=1)
@@ -212,7 +212,10 @@ trailer =  """
 </html>
 """
 
-def results_to_html(results_fname, records_dir, html_fname, top_n=5000):    
+def results_to_html(results_fname, records_dir, html_fname, top_n=5000):
+    """
+    Write ranked results to an html file
+    """
     tab = pd.read_pickle(results_fname)
     with open(html_fname, "wt") as outf:
         outf.write(header.format(terms_n=tab.shape[1], matches_n=tab.shape[0],
