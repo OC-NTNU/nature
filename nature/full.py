@@ -11,6 +11,8 @@ log = logging.getLogger(__name__)
 
 def extract_content(htm_files, xml_dir):
     """
+    Extract article content from html
+    
     This is a very rough extraction of the article content by stripping page
     headers, footers and side bars. Content is simply identified by either an
     <article> or <div id="content"> tag. The remainder still contains a lot

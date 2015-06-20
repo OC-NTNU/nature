@@ -18,8 +18,7 @@ from nature.sent import split_sent
 from nature.utils import copy_doc
 from nature.brat import make_brat_files, rank_brat_files
 from nature.parse import extract_parse_trees, extract_lemmatized_parse_trees
-from nature.vertical import ( convert_abs_to_vertical_format, 
-                              convert_full_to_vertical_format )
+from nature.vertical import convert_abs_to_vertical_format
 
 
 
@@ -88,6 +87,16 @@ def parse(sent_dir=_("SENT_DIR"),
     core_nlp = CoreNLP(lib_dir=_("CORENLP_HOME"),
                        lib_ver=_("CORENLP_VER"))
     core_nlp.parse(sent_dir, scnlp_dir)
+
+    
+def trees(scnlp_dir = _("SCNLP_DIR"),
+          word_parse_dir = _("WORD_PARSE_DIR"),
+          lemma_parse_dir = _("LEMMA_PARSE_DIR")):
+    """
+    Extract lexicalized and lemmatized parse trees
+    """
+    extract_parse_trees(scnlp_dir, word_parse_dir)
+    extract_lemmatized_parse_trees(scnlp_dir, lemma_parse_dir)
     
     
 def bibtex(xml_dir=_("XML_DIR"), 
@@ -107,15 +116,6 @@ def brat(results_fname=_("RESULTS_FILE"),
     make_brat_files(sent_dir, brat_dir)
     rank_brat_files(results_fname, brat_dir, brat_rank_dir)
     
-    
-def trees(scnlp_dir = _("SCNLP_DIR"),
-          word_parse_dir = _("WORD_PARSE_DIR"),
-          lemma_parse_dir = _("LEMMA_PARSE_DIR")):
-    """
-    Extract lexicalized and lemmatized parse tree
-    """
-    extract_parse_trees(scnlp_dir, word_parse_dir)
-    extract_lemmatized_parse_trees(scnlp_dir, lemma_parse_dir)
 
     
 def vertical(scnlp_dir = _("SCNLP_DIR"),

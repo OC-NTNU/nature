@@ -83,3 +83,12 @@ def get_option_int(config, section, option):
     if value:
         # may raise value error
         return int(value)
+    
+    
+def get_option_bool(config, section, option):
+    "get value as bool" 
+    # check first if a value is defined, otherwise return False
+    if get_option(config, section, option):
+        # '1', 'yes', 'true', 'on' --> True
+        # '0', 'no', 'false', 'off' --> False
+        return config.getboolean(section, option)
