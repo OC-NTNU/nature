@@ -53,7 +53,7 @@ def get_parser_and_config(config_fname):
     for fname in cfg_filenames:        
         if  fname not in read_ok:
             arg_parser.error(
-                "config file {!r} not found".format(namespace.config))
+                "config file {!r} not found".format(fname))
     
     return arg_parser, config_parser
 
