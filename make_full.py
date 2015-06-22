@@ -18,6 +18,7 @@ from nature.scnlp import CoreNLP
 from nature.utils import copy_doc
 from nature.parse import extract_parse_trees, extract_lemmatized_parse_trees
 from nature.vertical import convert_full_to_vertical_format
+from nature.vars import extract_vars,prune_vars
 
 
 
@@ -43,6 +44,10 @@ def _b(option):
     return get_option_bool(cfg, DEFAULT_SECTION, option)
 
     
+#-----------------------------------------------------------------------------    
+# Pipeline steps   
+#----------------------------------------------------------------------------- 
+
 def download(results_fname=_("RESULTS_FILE"),
              htm_dir=_("HTM_DIR"),
              max_n_htm=_i("MAX_N_HTM")):
@@ -98,6 +103,37 @@ def trees(scnlp_dir = _("SCNLP_DIR"),
     
 
     
+def vars(extract_vars_exec=_("EXTRACT_VARS_EXEC"), 
+         trees_dir=_("LEMMA_PARSE_DIR"), 
+         vars_file=_("VARS_FILE")):
+    extract_vars(extract_vars_exec, trees_dir, vars_file)
+    
+copy_doc(extract_vars, vars)
+
+    
+def prune(prune_vars_exec=_("PRUNE_VARS_EXEC"), 
+          prune_opts=_("PRUNE_OPTS"),
+          vars_file=_("VARS_FILE"),
+          pruned_file=_("PRUNED_VARS_FILE"),
+          options=_("PRUNE_OPTS")):
+    prune_vars(prune_vars_exec, vars_file, pruned_file, prune_opts or "")
+
+copy_doc(prune_vars, prune)
+
+
+steps = [download, extract, soa, parse, trees, vars, prune]   
+    
+def run_all():
+    for step in steps: step()
+    
+run_all.__doc__ = "Run complete  pipeline: {}".format(
+    " --> ".join(s.__name__ for s in steps))
+
+
+#-----------------------------------------------------------------------------    
+# Optional steps   
+#-----------------------------------------------------------------------------   
+    
 def vertical(scnlp_dir = _("SCNLP_DIR"),
              records_dir = _("RECORDS_DIR"),
              vert_dir = _("VERT_DIR"),):
@@ -106,17 +142,13 @@ def vertical(scnlp_dir = _("SCNLP_DIR"),
 copy_doc(convert_full_to_vertical_format, vertical)    
 
     
-    
-steps = [download, extract, soa, parse, trees]   
-    
 optional = [vertical]
-    
-def run_all():
-    for step in steps: step()
-    
-run_all.__doc__ = "Run complete  pipeline: {}".format(
-    " --> ".join(s.__name__ for s in steps))
+            
 
+#-----------------------------------------------------------------------------
+# Argh
+#-----------------------------------------------------------------------------
+    
 add_commands(parser, steps + optional + [run_all] )
 
 dispatch(parser)

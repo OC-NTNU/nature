@@ -19,11 +19,11 @@ from nature.utils import copy_doc
 from nature.brat import make_brat_files, rank_brat_files
 from nature.parse import extract_parse_trees, extract_lemmatized_parse_trees
 from nature.vertical import convert_abs_to_vertical_format
+from nature.vars import extract_vars,prune_vars
 
 
 
 DEFAULT_CONFIG_FNAME = "nature-corpus.ini"
-
 
 parser, cfg = get_parser_and_config(DEFAULT_CONFIG_FNAME)
 
@@ -41,10 +41,15 @@ def _i(option):
     return get_option_int(cfg, DEFAULT_SECTION, option)
       
     
+
+#-----------------------------------------------------------------------------    
+# Pipeline steps   
+#-----------------------------------------------------------------------------    
     
-    
-@arg('--match-min-n', type=int, help='required minimal number of matching keywords')
-@arg('--abs-max-n', type=int, help='maximum number of abstracts')
+@arg('--match-min-n', type=int, 
+     help='required minimal number of matching keywords')
+@arg('--abs-max-n', type=int, 
+     help='maximum number of abstracts')
 def extract(results_fname=_("RESULTS_FILE"),
             rec_dir = _("RECORDS_DIR"),
             abs_dir = _("XML_DIR"),
@@ -99,6 +104,38 @@ def trees(scnlp_dir = _("SCNLP_DIR"),
     extract_lemmatized_parse_trees(scnlp_dir, lemma_parse_dir)
     
     
+def vars(extract_vars_exec=_("EXTRACT_VARS_EXEC"), 
+         trees_dir=_("LEMMA_PARSE_DIR"), 
+         vars_file=_("VARS_FILE")):
+    extract_vars(extract_vars_exec, trees_dir, vars_file)
+    
+copy_doc(extract_vars, vars)
+
+    
+def prune(prune_vars_exec=_("PRUNE_VARS_EXEC"), 
+          prune_opts=_("PRUNE_OPTS"),
+          vars_file=_("VARS_FILE"),
+          pruned_file=_("PRUNED_VARS_FILE"),
+          options=_("PRUNE_OPTS")):
+    prune_vars(prune_vars_exec, vars_file, pruned_file, prune_opts or "")
+
+copy_doc(prune_vars, prune)
+
+
+    
+steps = [ extract, soa, split, parse, trees, vars, prune]   
+    
+def run_all():
+    for step in steps: step()
+    
+run_all.__doc__ = "Run complete  pipeline: {}".format(
+    " --> ".join(s.__name__ for s in steps))
+    
+    
+#-----------------------------------------------------------------------------    
+# Optional steps   
+#-----------------------------------------------------------------------------    
+    
 def bibtex(xml_dir=_("XML_DIR"), 
            bib_dir=_("BIB_DIR")):
     lookup_bibtex(xml_dir, bib_dir)
@@ -125,17 +162,14 @@ def vertical(scnlp_dir = _("SCNLP_DIR"),
     
 copy_doc(convert_abs_to_vertical_format, vertical)    
     
-    
-    
-steps = [ extract, soa, split, parse, trees]   
-    
+
 optional = [brat, bibtex, vertical]
-    
-def run_all():
-    for step in steps: step()
-    
-run_all.__doc__ = "Run complete  pipeline: {}".format(
-    " --> ".join(s.__name__ for s in steps))
+
+
+
+#-----------------------------------------------------------------------------
+# Argh
+#-----------------------------------------------------------------------------
 
 add_commands(parser, steps + optional + [run_all] )
 
