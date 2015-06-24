@@ -20,8 +20,6 @@ logging.getLogger("requests.packages.urllib3.connectionpool").setLevel(logging.W
 query_template =  """
 cql.keywords == "{term}" AND
 ( prism.publicationName = "Nature" OR
-  prism.publicationName = "Nature Chemistry" OR
-  prism.publicationName = "Nature Chemical Biology" OR
   prism.publicationName = "Nature Climate Change" OR 
   prism.publicationName = "Nature Communications" OR
   prism.publicationName = "Nature Geoscience" OR
