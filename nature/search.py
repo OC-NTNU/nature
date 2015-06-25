@@ -177,8 +177,6 @@ Nature Publishing Group:</p>
 
 <ol>
 <li>Nature</li>
-<li>Nature Chemistry</li>
-<li>Nature Chemical Biology</li>
 <li>Nature Climate Change</li>
 <li>Nature Communications</li>
 <li>Nature Geoscience</li>
