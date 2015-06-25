@@ -38,8 +38,9 @@ def search_npg(results_fname,
                records_dir,
                terms_fname=None, 
                max_records=None,
-               url = 'http://api.nature.com/content/opensearch/request',
-               after_year = 1997):
+               resume=False,
+               url='http://api.nature.com/content/opensearch/request',
+               after_year=1997):
     """
     Retrieve records from Nature publications matching search terms.  
     
@@ -64,6 +65,9 @@ def search_npg(results_fname,
     max_records: int, optional
         limit on number of result records per query (search term);
         None means unlimited
+        
+    resume: bool, optional
+        do not overwrite record file if it already exists (slightly faster)
     """    
     
     if terms_fname:
@@ -112,7 +116,7 @@ def search_npg(results_fname,
                     
                     record_fname = join(records_dir, doi.replace('/','#') + ".json")
                     
-                    if not exists(record_fname):  
+                    if not resume or not exists(record_fname):  
                         string = json.dumps(entry, check_circular=False, indent=4)
                         log.debug("writing " + record_fname)
                         open(record_fname, "wt").write(string)

@@ -47,8 +47,9 @@ copy_doc(get_terms, terms)
 def search(results_file = _("RESULTS_FILE"),
            records_dir = _("RECORDS_DIR"),
            terms_file = _("TERMS_FILE"),
-           max_n_records = _i("MAX_N_RECORDS")):
-    search_npg(results_file, records_dir, terms_file, max_n_records)
+           max_n_records = _i("MAX_N_RECORDS"),
+           resume = _("RECORDS_RESUME")):
+    search_npg(results_file, records_dir, terms_file, max_n_records, resume)
 
 copy_doc(search_npg, search)
 

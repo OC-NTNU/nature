@@ -51,8 +51,9 @@ def _b(option):
 def download(results_fname=_("RESULTS_FILE"),
              htm_dir=_("HTM_DIR"),
              max_n_htm=_i("MAX_N_HTM"),
-             resume=_b("HTM_RESUME")):
-    download_webpages(results_fname, htm_dir, max_n_htm, resume)
+             resume=_b("HTM_RESUME"),
+             cache_dir=_("HTM_CACHE_DIR")):
+    download_webpages(results_fname, htm_dir, max_n_htm, resume, cache_dir)
     
     
 copy_doc(download_webpages, download)    
