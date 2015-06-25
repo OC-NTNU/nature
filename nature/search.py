@@ -97,7 +97,11 @@ def search_npg(results_fname,
             
             while not max_records or n_records < max_records:
                 response = requests.get(url, params=params)
-                result = response.json()    
+                result = response.json()
+                
+                if result["feed"]["sru:numberOfRecords"] == 0:
+                    log.warn(u'zero search results for term "{}"'.format(term))
+                    break
                 
                 for entry in result["feed"]["entry"]:
                     head =entry['sru:recordData']['pam:message']['pam:article']['xhtml:head']
