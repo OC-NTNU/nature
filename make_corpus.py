@@ -8,7 +8,8 @@ import logging as log
 
 from argh import add_commands, dispatch, arg
 
-from nature.config import get_parser_and_config, get_option, get_option_int
+from nature.config import ( get_parser_and_config, get_option,
+                            get_option_int, get_option_bool )
 from nature.utils import copy_doc
 from nature.terms import get_terms
 from nature.search import search_npg, rank_results, results_to_html
@@ -30,7 +31,10 @@ def _(option):
     
 def _i(option):
     return get_option_int(cfg, DEFAULT_SECTION, option)
-    
+
+def _b(option):
+    return get_option_bool(cfg, DEFAULT_SECTION, option)
+
 
   
 @arg("--terms-n", type=int)
@@ -48,7 +52,7 @@ def search(results_file = _("RESULTS_FILE"),
            records_dir = _("RECORDS_DIR"),
            terms_file = _("TERMS_FILE"),
            max_n_records = _i("MAX_N_RECORDS"),
-           resume = _("RECORDS_RESUME")):
+           resume = _b("RESUME_SEARCH")):
     search_npg(results_file, records_dir, terms_file, max_n_records, resume)
 
 copy_doc(search_npg, search)

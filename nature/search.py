@@ -58,28 +58,25 @@ def search_npg(results_fname,
         output directory for records
 
     terms_fname: str
-        file containing search terms; only required for a new search, 
-        otherwise search process will continue with terms as stored in 
-        results_fname 
+        file containing search terms; only required for a new search
     
     max_records: int, optional
         limit on number of result records per query (search term);
         None means unlimited
         
     resume: bool, optional
-        do not overwrite record file if it already exists (slightly faster)
+        resume search with unprocesed terms in results_fname 
     """    
     
-    if terms_fname:
-        # new search
-        search_terms = open(terms_fname).read().strip().split("\n")        
-        results_tab = pd.DataFrame(columns=search_terms, dtype=bool)
-    else:
+    if resume:
         # continue search
         results_tab = pd.read_pickle(results_fname)
         # derive search terms from still empty columns  
         search_terms = list(results_tab.columns[~results_tab.any()])  
-        
+    else:
+        # new search
+        search_terms = open(terms_fname).read().strip().split("\n")        
+        results_tab = pd.DataFrame(columns=search_terms, dtype=bool)    
 
     if not exists(records_dir):
         log.info("creating dir " + records_dir)
@@ -116,10 +113,9 @@ def search_npg(results_fname,
                     
                     record_fname = join(records_dir, doi.replace('/','#') + ".json")
                     
-                    if not resume or not exists(record_fname):  
-                        string = json.dumps(entry, check_circular=False, indent=4)
-                        log.debug("writing " + record_fname)
-                        open(record_fname, "wt").write(string)
+                    string = json.dumps(entry, check_circular=False, indent=4)
+                    log.debug("writing " + record_fname)
+                    open(record_fname, "wt").write(string)
     
                     if n_records == max_records:
                         log.info(u'reached max number of records ({}) for term "{}"'.format(
