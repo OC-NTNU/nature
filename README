@@ -1,0 +1,14 @@
+
+
+Requirements:
+
+- Python3 (Anaconda dist)
+- Pandas
+- Argh
+
+
+Baleen-java
+
+
+For nxml2txt:
+- Python2 with lxml

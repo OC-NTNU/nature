@@ -12,7 +12,10 @@ from nature.utils import new_name
 
 def sources(results_fname, rec_dir, max_n=10000):
     tab = pd.read_pickle(results_fname)
-    counts = Counter()
+    counters = { "publication": Counter(),
+                 "publication + genre": Counter(),
+                 "publication + genre + date": Counter(),
+                 }
     
     for doi in tab.index[:max_n]:
         doi = doi.replace("/", "#")
@@ -23,10 +26,18 @@ def sources(results_fname, rec_dir, max_n=10000):
         date = head["prism:publicationDate"].split("-")[0]
         genre = str(head["prism:genre"])
         key = ", ".join([publication, genre, date])
-        counts[key] += 1
-        
-    for key, count in counts.most_common():
-        print("{}, {}".format(count, key))
+        counters["publication + genre + date"][key] += 1
+        key = ", ".join([publication, genre])
+        counters["publication + genre"][key] += 1
+        key = ", ".join([publication])
+        counters["publication"][key] += 1
+
+    for name, counter in counters.items():
+        print(80*"-")
+        print(name)
+        print(80*"-")
+        for key, count in counter.most_common():
+            print("{}, {}".format(count, key))
         
         
         
