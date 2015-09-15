@@ -50,8 +50,14 @@ def extract_content(htm_files, xml_dir):
         if content is None:
             log.warning('skipping: no <article> or <div id="content" ...> in ' + 
                         htm_fname)
-            continue   
-        
+            continue
+
+        refs_elem = tree.find("//{*}div[@id='references']") or tree.find("//{*}div[@id='References']")
+
+        if refs_elem:
+            # remove references
+            refs_elem.getparent().remove(refs_elem)
+
         xml_fname = new_name(htm_fname, new_dir=xml_dir, new_ext=".xml",
                              strip_ext=["htm"])
         log.info("writing content to " + xml_fname)
