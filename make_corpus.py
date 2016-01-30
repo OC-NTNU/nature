@@ -6,84 +6,77 @@ run initial steps to create Nature corpus
 
 import logging as log
 
-from argh import add_commands, dispatch, arg
+from argh import dispatch, arg
 
-from nature.config import ( get_parser_and_config, get_option,
-                            get_option_int, get_option_bool )
-from nature.utils import copy_doc
+from baleen.arghconfig import setup, add_commands, docstring
 from nature.terms import get_terms
 from nature.search import search_npg, rank_results, results_to_html
 
+DEFAULT_CONFIG_FILENAME = 'nature-corpus.ini'
+DEFAULT_SECTION = 'DEFAULT'
 
-DEFAULT_CONFIG_FNAME = "nature-corpus.ini"
+arg_parser, config, section, left_args = setup(DEFAULT_CONFIG_FILENAME,
+                                               DEFAULT_SECTION)
 
-parser, cfg = get_parser_and_config(DEFAULT_CONFIG_FNAME)
-
-
-
-DEFAULT_SECTION = "DEFAULT"
-
-log.basicConfig(level=cfg.get(DEFAULT_SECTION, "LOG_LEVEL",
-                              fallback="WARNING"))
-
-def _(option):
-    return get_option(cfg, DEFAULT_SECTION, option)
-    
-def _i(option):
-    return get_option_int(cfg, DEFAULT_SECTION, option)
-
-def _b(option):
-    return get_option_bool(cfg, DEFAULT_SECTION, option)
+log.basicConfig(
+        level=config.get(section, "LOG_LEVEL", fallback="WARNING"))
 
 
-  
-@arg("--terms-n", type=int)
-def terms(terms_csv_file = _("TERMS_CSV_FILE"), 
-          terms_file = _("TERMS_FILE"), 
-          terms_n = _i("TERMS_N")):
-    
-    get_terms(terms_csv_file, terms_file, terms_n)
-    
-copy_doc(get_terms, terms)
+# -----------------------------------------------------------------------------
+# Pipeline steps
+# -----------------------------------------------------------------------------
+
+@arg("--max-n-records", type=int)
+@docstring(search_npg)
+def search(results_file, records_dir, terms_file,
+           max_n_records=None,
+           resume=False):
+    search_npg(results_file, records_dir, terms_file, max_n_records, resume)
+
+
+@docstring(rank_results)
+def rank(results_file):
+    rank_results(results_file)
 
 
 @arg("--max-n-records", type=int)
-def search(results_file = _("RESULTS_FILE"),
-           records_dir = _("RECORDS_DIR"),
-           terms_file = _("TERMS_FILE"),
-           max_n_records = _i("MAX_N_RECORDS"),
-           resume = _b("RESUME_SEARCH")):
-    search_npg(results_file, records_dir, terms_file, max_n_records, resume)
-
-copy_doc(search_npg, search)
+@docstring(results_to_html)
+def html(search_results_file, records_dir, results_file,
+         max_n_records=None):
+    results_to_html(search_results_file, records_dir, results_file,
+                    max_n_records)
 
 
-def rank(results_file = _("RESULTS_FILE")):
-    rank_results(results_file)
-    
-copy_doc(rank_results, rank)
-    
+pipeline = [search, rank, html]
 
-def html(results_file = _("RESULTS_FILE"),
-         records_dir = _("RECORDS_DIR"),
-         html_result_file = _("HTML_RESULTS_FILE"),
-         html_max_n_records = _i("HTML_MAX_N_RECORDS")):
-    results_to_html(results_file, records_dir, html_result_file,
-                    html_max_n_records)
 
-copy_doc(results_to_html, html)
+def run_all():
+    for step in pipeline: step()
 
-steps = [search, rank, html]
+
+run_all.__doc__ = "Run complete  pipeline: {}".format(
+        " --> ".join(s.__name__ for s in pipeline))
+
+
+# -----------------------------------------------------------------------------
+# Optional steps
+# -----------------------------------------------------------------------------
+
+
+@arg("--max-n", type=int)
+@docstring(get_terms)
+def terms(csv_file, results_file, max_n=None):
+    get_terms(csv_file, results_file, max_n)
+
 
 optional = [terms]
 
-def run_all():
-    for step in steps: step()
-    
-run_all.__doc__ = "Run complete  pipeline: {}".format(
-    " --> ".join(s.__name__ for s in steps))
+# -----------------------------------------------------------------------------
+# Argh
+# -----------------------------------------------------------------------------
 
-    
-add_commands(parser, steps + optional + [run_all] )
+functions = pipeline + optional + [run_all]
 
-dispatch(parser)
+add_commands(arg_parser, functions, config, section, prefix=True)
+
+dispatch(arg_parser, argv=left_args)

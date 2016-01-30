@@ -2,12 +2,14 @@
 
 Requirements:
 
-- Python3 (Anaconda dist)
-- Pandas
-- Argh
+- python3 (Anaconda dist)
+- lxml
+- pandas
+- requests
+- argh
 
-
-Baleen-java
+- baleen-python
+- baleen-java
 
 
 For nxml2txt:
