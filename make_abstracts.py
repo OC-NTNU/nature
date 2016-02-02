@@ -8,8 +8,12 @@ import logging as log
 from tempfile import TemporaryDirectory
 
 from argh import dispatch, arg
+from py2neo.ext import neobox
 
-from baleen.arghconfig import setup, add_commands, docstring
+from baleen.arghconfig import setup, add_commands, docstring, run_commands
+from baleen.neo4j import setup_neo4j_box, vars_to_csv, neo4j_import, \
+    postproc_graph
+from baleen.vars import add_offsets
 
 from nature.abstract import extract_abstracts
 from nature.bibtex import lookup_bibtex
@@ -28,7 +32,7 @@ arg_parser, config, section, left_args = setup(DEFAULT_CONFIG_FILENAME,
                                                DEFAULT_SECTION)
 
 log.basicConfig(
-        level=config.get(section, "LOG_LEVEL", fallback="WARNING"))
+    level=config.get(section, "LOG_LEVEL", fallback="WARNING"))
 
 
 # -----------------------------------------------------------------------------
@@ -46,13 +50,14 @@ def extract(results_file, records_dir, xml_dir,
                       abs_max_n)
 
 
+@arg('-r', '--resume', help='toggle default value for resuming soa process')
 @docstring(convert_to_soa)
-def soa(nxml2txt, xml_dir, soa_dir):
-    convert_to_soa(nxml2txt, xml_dir, soa_dir)
+def soa(python2, nxml2txt, xml_dir, soa_dir, resume=False):
+    convert_to_soa(python2, nxml2txt, xml_dir, soa_dir, resume)
 
 
 @docstring(split_sent)
-def split(soa_dir, sent_dir, tmp_dir, corenlp_home, corenlp_ver):
+def split(soa_dir, sent_dir, corenlp_home, corenlp_ver, tmp_dir=None):
     if not tmp_dir:
         td = TemporaryDirectory()
         tmp_dir = td.name
@@ -84,20 +89,61 @@ def prunevars(prune_vars_exec, vars_file, pruned_file,
     prune_vars(prune_vars_exec, vars_file, pruned_file, options or "")
 
 
-pipeline = [extract, soa, split, parse, trees, extvars, prunevars]
+@docstring(add_offsets)
+def offsets(in_vars_file, scnlp_dir, out_vars_file):
+    add_offsets(in_vars_file, scnlp_dir, out_vars_file)
+
+
+@arg('--max-n-vars', type=int)
+@docstring(vars_to_csv)
+def tocsv(vars_file, scnlp_dir, sent_dir, bib_dir, nodes_dir,
+          relations_dir, max_n_vars=None):
+    vars_to_csv(vars_file, scnlp_dir, sent_dir, bib_dir, nodes_dir,
+                relations_dir, max_n_vars)
+
+
+@docstring(neo4j_import)
+def toneo(neobox_home, neobox_name, nodes_dir, relations_dir, options=None):
+    neo4j_import(neobox_home, neobox_name, nodes_dir, relations_dir,
+                 options=None)
+
+
+@docstring(postproc_graph)
+def ppgraph(neobox_home, neobox_name, neobox_username, neobox_password):
+    postproc_graph(neobox_home, neobox_name, neobox_username, neobox_password)
+
+
+pipeline = [extract, soa, split, parse, trees, extvars, prunevars, offsets,
+            tocsv, toneo, ppgraph]
 
 
 def run_all():
-    for step in pipeline: step()
+    run_commands(pipeline)
 
 
 run_all.__doc__ = "Run complete  pipeline: {}".format(
-        " --> ".join(s.__name__ for s in pipeline))
+    " --> ".join(s.__name__ for s in pipeline))
 
 
 # -----------------------------------------------------------------------------
 # Optional steps   
 # -----------------------------------------------------------------------------
+
+
+@docstring(setup_neo4j_box)
+def setup_neo4j(neobox_home, box_name, edition, version, password):
+    setup_neo4j_box(neobox_home, box_name, edition, version, password)
+
+
+def startserver(neobox_home, box_name):
+    """start neo4j server"""
+    neobox.Warehouse(neobox_home).box(box_name).server.start()
+
+
+def stopserver(neobox_home, box_name):
+    """stop neo4j server"""
+    neobox.Warehouse(neobox_home).box(box_name).server.stop()
+
 
 @docstring(lookup_bibtex)
 def bibtex(xml_dir, bib_dir):
@@ -115,7 +161,7 @@ def vertical(scnlp_dir, records_dir, vert_dir):
     convert_abs_to_vertical_format(scnlp_dir, records_dir, vert_dir)
 
 
-optional = [brat, bibtex, vertical]
+optional = [setup_neo4j, startserver, stopserver, bibtex, vertical]
 
 # -----------------------------------------------------------------------------
 # Argh

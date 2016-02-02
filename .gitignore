@@ -1,5 +1,5 @@
 workspace.xml
-abstracts/*
+abs/*
 records/*
 bib/*
 *.pkl

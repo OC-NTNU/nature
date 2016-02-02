@@ -41,7 +41,7 @@ from nature.utils import make_dir, file_list, new_name
 
 
 
-def convert_to_soa(nxml2txt, xml_files, soa_dir):
+def convert_to_soa(python2, nxml2txt, xml_files, soa_dir, resume=False):
     """
     Convert to stand-off annotation
     """
@@ -50,12 +50,13 @@ def convert_to_soa(nxml2txt, xml_files, soa_dir):
     for xml_fname in file_list(xml_files):
         txt_fname = new_name(xml_fname, soa_dir, ".txt", strip_ext=["xml"])
         soa_fname = new_name(xml_fname, soa_dir, ".soa", strip_ext=["xml"])
-        if not exists(txt_fname) and not exists(soa_fname):
+        if not resume or not (exists(txt_fname) or exists(soa_fname)):
             log.info("converting {} to {} and {}".format(
                 xml_fname, txt_fname, soa_fname))
             try:
                 ret = check_output([nxml2txt, xml_fname, txt_fname, soa_fname], 
-                                   stderr=STDOUT
+                                   stderr=STDOUT,
+                                   env={'PYTHON2': python2}
                                    )
             except CalledProcessError as err:
                 log.error(err.returncode)
