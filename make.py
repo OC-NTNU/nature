@@ -10,7 +10,7 @@ from baleen.neo4j import setup_neo4j_box, neo4j_import, postproc_graph, \
 from baleen.vars import add_offsets
 from nature.parse import extract_parse_trees, extract_lemmatized_parse_trees
 from nature.soa import convert_to_soa
-from nature.vars import extract_vars, prune_vars
+from nature.vars import extract_vars, prune_vars, preproc_vars
 
 from nature.vertical import convert_abs_to_vertical_format
 
@@ -40,6 +40,11 @@ def extvars(extract_vars_exec, trees_dir, vars_file):
 def prunevars(prune_vars_exec, vars_file, pruned_file,
               options=None):
     prune_vars(prune_vars_exec, vars_file, pruned_file, options or "")
+
+
+@docstring(preproc_vars)
+def prepvars(trans_exec, in_vars_file, out_vars_file, trans_file, prep_file):
+    preproc_vars(trans_exec, in_vars_file, out_vars_file, trans_file, prep_file)
 
 
 @docstring(add_offsets)

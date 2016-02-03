@@ -11,7 +11,7 @@ from argh import dispatch, arg
 
 from baleen.arghconfig import setup, add_commands, docstring, run_commands
 from make import setupserver, startserver, stopserver, vertical, soa, trees, \
-    extvars, prunevars, offsets, toneo, ppgraph, tocsv
+    extvars, prepvars, prunevars, offsets,  toneo, ppgraph, tocsv
 from nature.abstract import extract_abstracts
 from nature.brat import make_brat_files, rank_brat_files
 from nature.scnlp import CoreNLP
@@ -58,8 +58,8 @@ def parse(sent_dir, scnlp_dir, corenlp_home, corenlp_ver):
     core_nlp.parse(sent_dir, scnlp_dir)
 
 
-pipeline = [extract, soa, split, parse, trees, extvars, offsets, prunevars,
-            tocsv, toneo, ppgraph]
+pipeline = [extract, soa, split, parse, trees, extvars, offsets, prepvars,
+            prunevars, tocsv, toneo, ppgraph]
 
 
 def run_all():
@@ -68,6 +68,7 @@ def run_all():
 
 run_all.__doc__ = "Run complete  pipeline: {}".format(
     " --> ".join(s.__name__ for s in pipeline))
+
 
 # -----------------------------------------------------------------------------
 # Optional steps   

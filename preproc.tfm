@@ -1,0 +1,11 @@
+%==============================================================================
+$ PreProc1 $
+%==============================================================================
+
+% delete determiner (DT),
+% personal/possessive pronoun (PRP or PRP$) or list item marker (LS or LST)
+
+/DT|PRP|LS/=n < __
+
+delete n
+

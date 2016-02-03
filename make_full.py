@@ -16,7 +16,7 @@ from nature.full import extract_content
 from nature.scnlp import CoreNLP
 
 from make import setupserver, startserver, stopserver, vertical, soa, trees, \
-    extvars, prunevars, offsets, toneo, ppgraph, tocsv
+    extvars, prepvars, prunevars, offsets, toneo, ppgraph, tocsv
 
 DEFAULT_CONFIG_FILENAME = 'nature-corpus.ini'
 DEFAULT_SECTION = 'FULL'
@@ -63,8 +63,8 @@ def parse(soa_dir, scnlp_dir, corenlp_home, corenlp_ver,
                  )
 
 
-pipeline = [download, extract, soa, parse, trees, extvars, offsets, prunevars,
-            tocsv, toneo, ppgraph]
+pipeline = [download, extract, soa, parse, trees, extvars, offsets, prepvars,
+            prunevars, tocsv, toneo, ppgraph]
 
 
 def run_all():
