@@ -11,6 +11,7 @@ from argh import dispatch, arg
 from baleen.arghconfig import setup, add_commands, docstring, run_commands
 from nature.terms import get_terms
 from nature.search import search_npg, rank_results, results_to_html
+from nature.bibtex import lookup_bibtex
 
 DEFAULT_CONFIG_FILENAME = 'nature-corpus.ini'
 DEFAULT_SECTION = 'DEFAULT'
@@ -34,6 +35,11 @@ def search(results_file, records_dir, terms_file,
     search_npg(results_file, records_dir, terms_file, max_n_records, resume)
 
 
+@docstring(lookup_bibtex)
+def bibtex(records_dir, bib_dir):
+    lookup_bibtex(records_dir, bib_dir)
+
+
 @docstring(rank_results)
 def rank(results_file):
     rank_results(results_file)
@@ -47,7 +53,7 @@ def html(search_results_file, records_dir, results_file,
                     max_n_records)
 
 
-pipeline = [search, rank, html]
+pipeline = [search, bibtex, rank, html]
 
 
 def run_all():

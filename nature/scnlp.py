@@ -68,7 +68,7 @@ class CoreNLP(object):
                    tmp_file.name, out_dir, threads, options)
         
         log.info("\n" + cmd)
-        ret = check_output(cmd, shell=True, stderr=STDOUT, universal_newlines=True)
+        ret = check_output(cmd, shell=True, universal_newlines=True)
         log.info("\n" + ret)
     
     def ssplit(self,
