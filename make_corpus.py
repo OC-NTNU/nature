@@ -8,7 +8,7 @@ import logging as log
 
 from argh import dispatch, arg
 
-from baleen.arghconfig import setup, add_commands, docstring
+from baleen.arghconfig import setup, add_commands, docstring, run_commands
 from nature.terms import get_terms
 from nature.search import search_npg, rank_results, results_to_html
 
@@ -51,8 +51,7 @@ pipeline = [search, rank, html]
 
 
 def run_all():
-    for step in pipeline: step()
-
+    run_commands(pipeline)
 
 run_all.__doc__ = "Run complete  pipeline: {}".format(
         " --> ".join(s.__name__ for s in pipeline))

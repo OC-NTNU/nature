@@ -155,7 +155,7 @@ def rank_results(results_fname):
     """
     tab = pd.read_pickle(results_fname)
     totals = tab.sum(axis=1)
-    totals.sort(ascending=False)    
+    totals.sort_values(ascending=False, inplace=True)
     dois = totals.keys()
     tab = tab.ix[dois]
     pd.to_pickle(tab, results_fname)
