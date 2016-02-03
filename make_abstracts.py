@@ -58,7 +58,7 @@ def parse(sent_dir, scnlp_dir, corenlp_home, corenlp_ver):
     core_nlp.parse(sent_dir, scnlp_dir)
 
 
-pipeline = [extract, soa, split, parse, trees, extvars, prunevars, offsets,
+pipeline = [extract, soa, split, parse, trees, extvars, offsets, prunevars,
             tocsv, toneo, ppgraph]
 
 

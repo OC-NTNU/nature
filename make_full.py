@@ -63,7 +63,7 @@ def parse(soa_dir, scnlp_dir, corenlp_home, corenlp_ver,
                  )
 
 
-pipeline = [download, extract, soa, parse, trees, extvars, prunevars, offsets,
+pipeline = [download, extract, soa, parse, trees, extvars, offsets, prunevars,
             tocsv, toneo, ppgraph]
 
 

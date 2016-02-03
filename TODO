@@ -1,0 +1,6 @@
+NOW:
+- first attempt at filtering variables (minor diffs in case, stopwords, etc)
+
+LATER:
+- fix the '[]' output during var extraction in Java code
+- make test script
