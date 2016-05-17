@@ -13,7 +13,7 @@ from baleen.arghconfig import setup, add_commands, docstring, run_commands
 
 from nature.download import download_webpages
 from nature.full import extract_content
-from nature.scnlp import CoreNLP
+from baleen.scnlp import CoreNLP
 
 from make import setupserver, startserver, stopserver, vertical, soa, trees, \
     extvars, prepvars, prunevars, offsets, toneo, ppgraph, tocsv

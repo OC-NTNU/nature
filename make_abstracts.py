@@ -14,7 +14,7 @@ from make import setupserver, startserver, stopserver, vertical, soa, trees, \
     extvars, prepvars, prunevars, offsets,  toneo, ppgraph, tocsv
 from nature.abstract import extract_abstracts
 from nature.brat import make_brat_files, rank_brat_files
-from nature.scnlp import CoreNLP
+from baleen.scnlp import CoreNLP
 from nature.sent import split_sent
 
 DEFAULT_CONFIG_FILENAME = 'nature-corpus.ini'

@@ -9,6 +9,7 @@ missing-mappings.txt
 search_results.*
 tmp/*
 trial/*
+neobox/*
 *.ini
 !nature-corpus.ini
 !trial.ini
