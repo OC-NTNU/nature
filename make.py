@@ -7,11 +7,9 @@ from py2neo.ext import neobox
 from baleen.arghconfig import docstring
 from baleen.neo4j import setup_neo4j_box, neo4j_import, postproc_graph, \
     vars_to_csv
-from baleen.vars import add_offsets
-from nature.parse import extract_parse_trees, extract_lemmatized_parse_trees
+from baleen.vars import add_offsets, extract_vars, preproc_vars, prune_vars
+from baleen.scnlp import extract_parse_trees, extract_lemmatized_parse_trees
 from nature.soa import convert_to_soa
-from nature.vars import extract_vars, prune_vars, preproc_vars
-
 from nature.vertical import convert_abs_to_vertical_format
 
 

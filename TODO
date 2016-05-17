@@ -1,6 +1,7 @@
 NOW:
-- first attempt at filtering variables (minor diffs in case, stopwords, etc)
+- how to exclude pruned vars from co-occurrence counts?
 
 LATER:
+- filter graph on length of vars and no of occurrences (>1)
 - fix the '[]' output during var extraction in Java code
 - make test script
