@@ -13,4 +13,14 @@ Requirements:
 
 
 For nxml2txt:
+
 - Python2 with lxml
+
+
+Test:
+
+./make_corpus.py -c nature-corpus.ini -c local.ini -c trial.ini run-all
+./make_abs.py -c nature-corpus.ini -c local.ini -c trial.ini run-all
+./make_full.py -c nature-corpus.ini -c local.ini -c trial.ini run-all
+
+

@@ -4,23 +4,15 @@
 run initial steps to create Nature corpus
 """
 
-import logging as log
+from argh import arg
 
-from argh import dispatch, arg
+from baleen.arghconfig import docstring
+from baleen.pipeline import script
+from baleen.steps import clean
 
-from baleen.arghconfig import setup, add_commands, docstring, run_commands
 from nature.terms import get_terms
 from nature.search import search_npg, rank_results, results_to_html
 from nature.bibtex import lookup_bibtex
-
-DEFAULT_CONFIG_FILENAME = 'nature-corpus.ini'
-DEFAULT_SECTION = 'DEFAULT'
-
-arg_parser, config, section, left_args = setup(DEFAULT_CONFIG_FILENAME,
-                                               DEFAULT_SECTION)
-
-log.basicConfig(
-        level=config.get(section, "LOG_LEVEL", fallback="WARNING"))
 
 
 # -----------------------------------------------------------------------------
@@ -36,8 +28,9 @@ def search(results_file, records_dir, terms_file,
 
 
 @docstring(lookup_bibtex)
-def bibtex(records_dir, bib_dir):
-    lookup_bibtex(records_dir, bib_dir)
+@arg('--resume', help='toggle default value for resuming')
+def bibtex(records_dir, bib_dir, resume=False):
+    lookup_bibtex(records_dir, bib_dir, resume=resume)
 
 
 @docstring(rank_results)
@@ -53,20 +46,9 @@ def html(search_results_file, records_dir, results_file,
                     max_n_records)
 
 
-pipeline = [search, bibtex, rank, html]
-
-
-def run_all():
-    run_commands(pipeline)
-
-run_all.__doc__ = "Run complete  pipeline: {}".format(
-        " --> ".join(s.__name__ for s in pipeline))
-
-
 # -----------------------------------------------------------------------------
 # Optional steps
 # -----------------------------------------------------------------------------
-
 
 @arg("--max-n", type=int)
 @docstring(get_terms)
@@ -74,14 +56,6 @@ def terms(csv_file, results_file, max_n=None):
     get_terms(csv_file, results_file, max_n)
 
 
-optional = [terms]
-
-# -----------------------------------------------------------------------------
-# Argh
-# -----------------------------------------------------------------------------
-
-functions = pipeline + optional + [run_all]
-
-add_commands(arg_parser, functions, config, section, prefix=True)
-
-dispatch(arg_parser, argv=left_args)
+script(steps=[search, bibtex, rank, html],
+       optional=[terms, clean],
+       default_cfg_fnames=['nature-corpus.ini'])
